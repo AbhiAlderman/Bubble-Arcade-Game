@@ -178,7 +178,10 @@ func _on_flipping_timer_timeout():
 
 func _on_bubble_hitbox_area_entered(area):
 	if area.is_in_group("platform"):
-		if position.y <= area.position.y and player_state != states.DASHING:
+		if player_state == states.DASHING:
+				#do some parry stuff here
+				return
+		elif position.y <= area.position.y:
 			bounce()
 			area.pop()
 
