@@ -343,15 +343,24 @@ one_shot = true
 [node name="Death_Timer" type="Timer" parent="Timers"]
 one_shot = true
 
+[node name="Dash_Timer" type="Timer" parent="Timers"]
+wait_time = 0.3
+one_shot = true
+
+[node name="Dash_Again_Timer" type="Timer" parent="Timers"]
+wait_time = 2.0
+one_shot = true
+
 [node name="bubble_hitbox" type="Area2D" parent="."]
 z_index = 3
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bubble_hitbox"]
 position = Vector2(-0.625, 11.875)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_gam3v")
 
 [connection signal="timeout" from="Timers/Flipping_Timer" to="." method="_on_flipping_timer_timeout"]
 [connection signal="timeout" from="Timers/Death_Timer" to="." method="_on_death_timer_timeout"]
+[connection signal="timeout" from="Timers/Dash_Timer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="Timers/Dash_Again_Timer" to="." method="_on_dash_again_timer_timeout"]
 [connection signal="area_entered" from="bubble_hitbox" to="." method="_on_bubble_hitbox_area_entered"]

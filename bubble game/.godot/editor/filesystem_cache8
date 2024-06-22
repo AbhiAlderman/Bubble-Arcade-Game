@@ -1,0 +1,61 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1719086473
+dash.tscn::PackedScene::3635129673009999833::1719086473::0::1::::<><>::
+::res://Assets/::1719080246
+::res://Assets/level/::1719080402
+cavesofgallet.png::CompressedTexture2D::2417674581406199993::1719080246::1719080402::1::::<><>::
+cavesofgallet_tiles.png::CompressedTexture2D::3334203733988950245::1719080246::1719080402::1::::<><>::
+::res://Assets/obstacles/::1719080402
+bubble-Sheet.png::CompressedTexture2D::2648130960304224755::1719080246::1719080402::1::::<><>::
+bubble.png::CompressedTexture2D::979079765722698482::1719080246::1719080402::1::::<><>::
+::res://Assets/Prototype Character/::1719080245
+::res://Assets/Prototype Character/Asset Packs 1-4 (final)/::1719080245
+::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V1/::1719080245
+::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V1/Player Idle/::1719080402
+Player Idle 48x48.png::CompressedTexture2D::5446990027191124338::1719080245::1719080402::1::::<><>::
+::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V1/Player Jump/::1719080402
+player jump 48x48.png::CompressedTexture2D::3453750984432262022::1719080245::1719080402::1::::<><>::
+::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V1/Player Land/::1719080402
+player land 48x48.png::CompressedTexture2D::1034465511942407073::1719080245::1719080402::1::::<><>::
+::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V1/Player Run/::1719080402
+player run 48x48.png::CompressedTexture2D::2552499824574864593::1719080245::1719080402::1::::<><>::
+::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V2/::1719080245
+::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V2/Air Spin/::1719080402
+player air spin 48x48.png::CompressedTexture2D::5992513423964710657::1719080245::1719080402::1::::<><>::
+::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V3/::1719080245
+::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V3/Player Death/::1719080402
+Player Death 64x64.png::CompressedTexture2D::7008872474527642981::1719080245::1719080402::1::::<><>::
+::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V4/::1719080246
+::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V4/Player Climb-Back/::1719080402
+player climb-back 48x48.png::CompressedTexture2D::3113837941258628494::1719080246::1719080402::1::::<><>::
+::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V4/Player Climb-Side/::1719080402
+Player Side-Climb 48x48.png::CompressedTexture2D::950261648208180500::1719080246::1719080402::1::::<><>::
+::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V4/Player Climb-Side/old climb/::1719080402
+Player Side-Climb 48x48.png::CompressedTexture2D::3508027249518073994::1719080246::1719080402::1::::<><>::
+::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V4/Player Katana Air Attack/::1719080402
+player katana air attack (upper body) 80x64.png::CompressedTexture2D::7458971579964366891::1719080246::1719080402::1::::<><>::
+::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V4/Player Katana Attack-Sheathe/::1719080402
+player katana attack-sheathe 80x64.png::CompressedTexture2D::3428561760884514575::1719080246::1719080402::1::::<><>::
+::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V4/Player Katana Continuous Attack/::1719080402
+player katana continuous attack 80x64.png::CompressedTexture2D::5094718814359024337::1719080246::1719080402::1::::<><>::
+::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V4/Player Katana Run/::1719080402
+player katana run 48x48.png::CompressedTexture2D::2292590012909692294::1719080246::1719080402::1::::<><>::
+::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V4/Player Katana Run Attack/::1719080402
+player katana running attack (upper body).png::CompressedTexture2D::4450235365711080866::1719080246::1719080402::1::::<><>::
+::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V4/Player Punch Cross/::1719080402
+Player Punch Cross 64x64.png::CompressedTexture2D::135531011803489935::1719080246::1719080402::1::::<><>::
+::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V4/Player Punch Jab/::1719080402
+Player Jab 48x48.png::CompressedTexture2D::374696685003017370::1719080246::1719080402::1::::<><>::
+::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V4/Player Running Shooting-Running Aiming/::1719080402
+Player Running Aiming 48x48.png::CompressedTexture2D::3442543766060010317::1719080246::1719080402::1::::<><>::
+Player Running Shooting 48x48.png::CompressedTexture2D::6670434840956594330::1719080246::1719080402::1::::<><>::
+::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V4/Player Shoot 2H/::1719080402
+player shoot 2H 48x48.png::CompressedTexture2D::5128428011125302419::1719080246::1719080402::1::::<><>::
+::res://Scenes/::1719086473
+balloon.tscn::PackedScene::152623973485237384::1719080246::0::1::::<><>::uid://bdy1lhrc37724::::res://Assets/obstacles/bubble-Sheet.png<>res://Scripts/balloon.gd
+Dash-Timer.gd::GDScript::-1::1719086458::0::1::::<>Timer<>::
+level.tscn::PackedScene::6757970863757621107::1719086473::0::1::::<><>::uid://bape0nxfqw7mr::::res://Assets/level/cavesofgallet.png<>uid://6gvd61vivt27::::res://Scenes/player.tscn<>uid://cf6xu5nbej17::::res://Scenes/balloon.tscn
+player.tscn::PackedScene::2189522502887625162::1719086496::0::1::::<><>::res://Scripts/player.gd<>uid://c64fduelcmbwv::::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V3/Player Death/Player Death 64x64.png<>uid://crm225t5vfc86::::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V2/Air Spin/player air spin 48x48.png<>uid://cjuteog4wmwq1::::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V1/Player Idle/Player Idle 48x48.png<>uid://bpha1k41041t7::::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V1/Player Jump/player jump 48x48.png<>uid://bcmpkf4g3ikx2::::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V1/Player Run/player run 48x48.png<>uid://br15b4eurcqdt::::res://dash.tscn
+::res://Scripts/::1719086458
+balloon.gd::GDScript::-1::1719080246::0::1::::<>Node2D<>::
+player.gd::GDScript::-1::1719086458::0::1::::<>CharacterBody2D<>::

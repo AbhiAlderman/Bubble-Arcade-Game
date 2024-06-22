@@ -1,0 +1,7 @@
+res://Scenes/level.tscn
+res://Scripts/player.gd
+res://Dash-Timer.gd
+res://dash.tscn
+res://Scenes/Dash-Timer.gd
+res://Scenes/player.tscn
+res://Scenes/dash.tscn

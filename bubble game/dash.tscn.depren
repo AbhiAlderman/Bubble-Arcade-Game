@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ce4qcueideh08"]
+
+[ext_resource type="Script" path="res://Scenes/Dash-Timer.gd" id="1_h1a5g"]
+
+[node name="Dash" type="Node2D"]
+
+[node name="Dash-timer" type="Timer" parent="."]
+script = ExtResource("1_h1a5g")
