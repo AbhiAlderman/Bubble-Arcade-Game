@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3ju17pgxmxjv"]
+[gd_scene load_steps=8 format=3 uid="uid://c3ju17pgxmxjv"]
 
 [ext_resource type="Texture2D" uid="uid://bape0nxfqw7mr" path="res://Assets/level/cavesofgallet.png" id="1_k2ad0"]
 [ext_resource type="PackedScene" uid="uid://6gvd61vivt27" path="res://Scenes/player.tscn" id="2_6fyvf"]
 [ext_resource type="PackedScene" uid="uid://cf6xu5nbej17" path="res://Scenes/balloon.tscn" id="3_6fc6f"]
+[ext_resource type="PackedScene" uid="uid://bfta1drvseepw" path="res://Scenes/red_bubble.tscn" id="4_p5lqp"]
+[ext_resource type="PackedScene" uid="uid://t7hd2psqqr2p" path="res://Scenes/green_bubble.tscn" id="5_50k8x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_agq6s"]
 texture = ExtResource("1_k2ad0")
@@ -1764,50 +1766,19 @@ layer_0/tile_data = PackedInt32Array(196607, 1835008, 7, 131072, 1835008, 7, 196
 [node name="player" parent="." instance=ExtResource("2_6fyvf")]
 position = Vector2(-2, -27)
 
-[node name="balloon" parent="." instance=ExtResource("3_6fc6f")]
-position = Vector2(-144, 220)
+[node name="bubbles" type="Node" parent="."]
 
-[node name="balloon2" parent="." instance=ExtResource("3_6fc6f")]
-position = Vector2(45, 319)
+[node name="balloon" parent="bubbles" instance=ExtResource("3_6fc6f")]
+position = Vector2(-207, 117)
 
-[node name="balloon3" parent="." instance=ExtResource("3_6fc6f")]
-position = Vector2(-69, 371)
+[node name="balloon2" parent="bubbles" instance=ExtResource("3_6fc6f")]
+position = Vector2(-94, 178)
 
-[node name="balloon4" parent="." instance=ExtResource("3_6fc6f")]
-position = Vector2(198, 138)
+[node name="balloon3" parent="bubbles" instance=ExtResource("3_6fc6f")]
+position = Vector2(50, 114)
 
-[node name="balloon5" parent="." instance=ExtResource("3_6fc6f")]
-position = Vector2(57, 176)
+[node name="red_bubble" parent="bubbles" instance=ExtResource("4_p5lqp")]
+position = Vector2(166, 160)
 
-[node name="balloon6" parent="." instance=ExtResource("3_6fc6f")]
-position = Vector2(-277, 100)
-
-[node name="balloon7" parent="." instance=ExtResource("3_6fc6f")]
-position = Vector2(-270, 340)
-
-[node name="balloon8" parent="." instance=ExtResource("3_6fc6f")]
-position = Vector2(-158, 540)
-
-[node name="balloon9" parent="." instance=ExtResource("3_6fc6f")]
-position = Vector2(71, 553)
-
-[node name="balloon10" parent="." instance=ExtResource("3_6fc6f")]
-position = Vector2(215, 349)
-
-[node name="balloon11" parent="." instance=ExtResource("3_6fc6f")]
-position = Vector2(226, 497)
-
-[node name="balloon12" parent="." instance=ExtResource("3_6fc6f")]
-position = Vector2(-100, 717)
-
-[node name="balloon13" parent="." instance=ExtResource("3_6fc6f")]
-position = Vector2(-275, 560)
-
-[node name="balloon14" parent="." instance=ExtResource("3_6fc6f")]
-position = Vector2(129, 719)
-
-[node name="balloon15" parent="." instance=ExtResource("3_6fc6f")]
-position = Vector2(345, 589)
-
-[node name="balloon16" parent="." instance=ExtResource("3_6fc6f")]
-position = Vector2(345, 589)
+[node name="green_bubble" parent="bubbles" instance=ExtResource("5_50k8x")]
+position = Vector2(174, 95)
