@@ -34,3 +34,8 @@ func _physics_process(delta):
 func pop():
 	bubble_state = states.POPPING
 	pop_timer = POP_TIME
+
+
+func _on_area_entered(area):
+	if area.is_in_group("skybox"):
+		pop()

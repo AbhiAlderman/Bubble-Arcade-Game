@@ -1,6 +1,6 @@
 extends Node2D
 
-const POP_TIME = 0.08
+const POP_TIME = 0.2
 const RISE_SPEED = -80
 @onready var sprite = $AnimatedSprite2D
 var bubble_state: states
@@ -34,3 +34,8 @@ func _physics_process(delta):
 func pop():
 	bubble_state = states.POPPING
 	pop_timer = POP_TIME
+
+
+func _on_area_entered(area):
+	if area.is_in_group("skybox"):
+		pop()

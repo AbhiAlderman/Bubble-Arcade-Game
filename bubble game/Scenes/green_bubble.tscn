@@ -68,18 +68,23 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_20201"]
-radius = 13.7642
+radius = 10.6434
 
 [node name="green_bubble" type="Area2D" groups=["platform"]]
 scale = Vector2(1.6, 1.6)
 collision_layer = 4
+collision_mask = 33
 script = ExtResource("1_c2owc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_siea8")
+animation = &"popping"
+frame = 1
+frame_progress = 0.933335
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_20201")
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

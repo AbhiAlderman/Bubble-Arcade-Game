@@ -1,19 +1,33 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1719085260
+::res://::1719102926
+export_presets.cfg::TextFile::-1::1719102572::0::1::::<><>::
 modulate_green.gd::GDScript::-1::1719084861::0::1::::<>AnimatedSprite2D<>::
 ::res://Assets/::1719088759
-::res://Assets/Custom Character/::1719088770
+::res://Assets/Custom Character/::1719115325
+bar_sheet.png::CompressedTexture2D::3068646107865295882::1719099084::1719099086::1::::<><>::
+damaged_head.png::CompressedTexture2D::2338406344182190470::1719107623::1719107625::1::::<><>::
+dash_effect.png::CompressedTexture2D::5707034105622357179::1719100290::1719100305::1::::<><>::
+hurt-Sheet-Sheet.png::CompressedTexture2D::8257775018967155106::1719115325::1719115327::1::::<><>::
+player air spin 48x48-Sheet.png::CompressedTexture2D::3417365816452723452::1719092501::1719093196::1::::<><>::
+Player Death 64x64-export.png::CompressedTexture2D::5012295215381579657::1719093194::1719093196::1::::<><>::
 Player Idle 48x48-Sheet.png::CompressedTexture2D::7954718778873451159::1719088770::1719088772::1::::<><>::
-::res://Assets/level/::1719053433
+player jump 48x48-Sheet.png::CompressedTexture2D::4259015105517248895::1719093293::1719093294::1::::<><>::
+Player Roll 48x48-Sheet.png::CompressedTexture2D::8839233673854207678::1719094679::1719094680::1::::<><>::
+player run 48x48-Sheet.png::CompressedTexture2D::1925933770778557553::1719093528::1719093529::1::::<><>::
+::res://Assets/level/::1719104872
+animated_head_sheet.png::CompressedTexture2D::3142384872396403268::1719104870::1719104872::1::::<><>::
 cavesofgallet.png::CompressedTexture2D::2417674581406199993::1719053403::1719053433::1::::<><>::
 cavesofgallet_tiles.png::CompressedTexture2D::3334203733988950245::1719053403::1719053433::1::::<><>::
-::res://Assets/obstacles/::1719084101
+head.png::CompressedTexture2D::4277941961818764396::1719104093::1719104097::1::::<><>::
+::res://Assets/obstacles/::1719105970
 bubble-Sheet.png::CompressedTexture2D::2648130960304224755::1719053403::1719053433::1::::<><>::
 bubble.png::CompressedTexture2D::979079765722698482::1719053403::1719053433::1::::<><>::
 bubble_red-Sheet.png::CompressedTexture2D::4637771266325487730::1719083856::1719084101::1::::<><>::
 bubble_red.png::CompressedTexture2D::8280201093954284789::1719083708::1719084101::1::::<><>::
+Mine.png::CompressedTexture2D::3656488096966654637::1719102339::1719102343::1::::<><>::
+mine_explosion.png::CompressedTexture2D::8787814118368288275::1719105965::1719105970::1::::<><>::
 ::res://Assets/Prototype Character/::1719053403
-::res://Assets/Prototype Character/Asset Packs 1-4 (final)/::1719053403
+::res://Assets/Prototype Character/Asset Packs 1-4 (final)/::1719093421
 ::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V1/::1719053403
 ::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V1/Player Idle/::1719053433
 Player Idle 48x48.png::CompressedTexture2D::5446990027191124338::1719053403::1719053433::1::::<><>::
@@ -27,42 +41,20 @@ player run 48x48.png::CompressedTexture2D::2552499824574864593::1719053403::1719
 ::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V2/Air Spin/::1719053433
 player air spin 48x48.png::CompressedTexture2D::5992513423964710657::1719053403::1719053433::1::::<><>::
 ::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V3/::1719053403
-::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V3/Player Death/::1719053433
-Player Death 64x64.png::CompressedTexture2D::7008872474527642981::1719053403::1719053433::1::::<><>::
-::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V4/::1719053403
-::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V4/Player Climb-Back/::1719053433
-player climb-back 48x48.png::CompressedTexture2D::3113837941258628494::1719053403::1719053433::1::::<><>::
-::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V4/Player Climb-Side/::1719053433
-Player Side-Climb 48x48.png::CompressedTexture2D::950261648208180500::1719053403::1719053433::1::::<><>::
-::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V4/Player Climb-Side/old climb/::1719053433
-Player Side-Climb 48x48.png::CompressedTexture2D::3508027249518073994::1719053403::1719053433::1::::<><>::
-::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V4/Player Katana Air Attack/::1719053433
-player katana air attack (upper body) 80x64.png::CompressedTexture2D::7458971579964366891::1719053403::1719053433::1::::<><>::
-::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V4/Player Katana Attack-Sheathe/::1719053433
-player katana attack-sheathe 80x64.png::CompressedTexture2D::3428561760884514575::1719053403::1719053433::1::::<><>::
-::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V4/Player Katana Continuous Attack/::1719053433
-player katana continuous attack 80x64.png::CompressedTexture2D::5094718814359024337::1719053403::1719053433::1::::<><>::
-::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V4/Player Katana Run/::1719053433
-player katana run 48x48.png::CompressedTexture2D::2292590012909692294::1719053403::1719053433::1::::<><>::
-::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V4/Player Katana Run Attack/::1719053433
-player katana running attack (upper body).png::CompressedTexture2D::4450235365711080866::1719053403::1719053433::1::::<><>::
-::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V4/Player Punch Cross/::1719053433
-Player Punch Cross 64x64.png::CompressedTexture2D::135531011803489935::1719053403::1719053433::1::::<><>::
-::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V4/Player Punch Jab/::1719053433
-Player Jab 48x48.png::CompressedTexture2D::374696685003017370::1719053403::1719053433::1::::<><>::
-::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V4/Player Running Shooting-Running Aiming/::1719053433
-Player Running Aiming 48x48.png::CompressedTexture2D::3442543766060010317::1719053403::1719053433::1::::<><>::
-Player Running Shooting 48x48.png::CompressedTexture2D::6670434840956594330::1719053403::1719053433::1::::<><>::
-::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V4/Player Shoot 2H/::1719053433
-player shoot 2H 48x48.png::CompressedTexture2D::5128428011125302419::1719053403::1719053433::1::::<><>::
-::res://Scenes/::1719085275
-balloon.tscn::PackedScene::152623973485237384::1719085193::0::1::::<><>::uid://bdy1lhrc37724::::res://Assets/obstacles/bubble-Sheet.png<>res://Scripts/balloon.gd
-level.tscn::PackedScene::6757970863757621107::1719085193::0::1::::<><>::uid://bape0nxfqw7mr::::res://Assets/level/cavesofgallet.png<>uid://6gvd61vivt27::::res://Scenes/player.tscn<>uid://cf6xu5nbej17::::res://Scenes/balloon.tscn<>uid://bfta1drvseepw::::res://Scenes/red_bubble.tscn<>uid://t7hd2psqqr2p::::res://Scenes/green_bubble.tscn
-player.tscn::PackedScene::2189522502887625162::1719085275::0::1::::<><>::res://Scripts/player.gd<>uid://c64fduelcmbwv::::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V3/Player Death/Player Death 64x64.png<>uid://crm225t5vfc86::::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V2/Air Spin/player air spin 48x48.png<>uid://cjuteog4wmwq1::::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V1/Player Idle/Player Idle 48x48.png<>uid://bpha1k41041t7::::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V1/Player Jump/player jump 48x48.png<>uid://bcmpkf4g3ikx2::::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V1/Player Run/player run 48x48.png
-red_bubble.tscn::PackedScene::2776634694662011844::1719085193::0::1::::<><>::res://Scripts/red_bubble.gd<>uid://b7ctod628d8qg::::res://Assets/obstacles/bubble_red-Sheet.png
-green_bubble.tscn::PackedScene::1400079935725996649::1719085193::0::1::::<><>::res://Scripts/green_bubble.gd<>uid://bdy1lhrc37724::::res://Assets/obstacles/bubble-Sheet.png
-::res://Scripts/::1719085001
-balloon.gd::GDScript::-1::1719084959::0::1::::<>Node2D<>::
-player.gd::GDScript::-1::1719080573::0::1::::<>CharacterBody2D<>::
-red_bubble.gd::GDScript::-1::1719085001::0::1::::<>Node2D<>::
-green_bubble.gd::GDScript::-1::1719084968::0::1::::<>Node2D<>::
+::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V3/Player Death/::1719093196
+Player Death 64x64.png::CompressedTexture2D::7008872474527642981::1719093177::1719093196::1::::<><>::
+::res://Scenes/::1719115310
+balloon.tscn::PackedScene::152623973485237384::1719115262::0::1::::<><>::uid://bdy1lhrc37724::::res://Assets/obstacles/bubble-Sheet.png<>res://Scripts/balloon.gd
+level.tscn::PackedScene::6757970863757621107::1719115261::0::1::::<><>::uid://bape0nxfqw7mr::::res://Assets/level/cavesofgallet.png<>res://Scripts/level.gd<>uid://6gvd61vivt27::::res://Scenes/player.tscn<>uid://8k0hfy8n6kdq::::res://Assets/Custom Character/damaged_head.png<>uid://bk1gvcojepf37::::res://Assets/level/animated_head_sheet.png<>uid://dl5cp1av8gapu::::res://Scenes/mine.tscn
+player.tscn::PackedScene::2189522502887625162::1719115310::0::1::::<><>::res://Scripts/player.gd<>uid://c64fduelcmbwv::::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V3/Player Death/Player Death 64x64.png<>uid://68qnc173biew::::res://Scenes/ghost.tscn<>uid://dx615fty2q67s::::res://Assets/Custom Character/Player Roll 48x48-Sheet.png<>uid://boxnrsfuvi6my::::res://Assets/Custom Character/player air spin 48x48-Sheet.png<>uid://dlllb53r4pvn8::::res://Assets/Custom Character/Player Idle 48x48-Sheet.png<>uid://b1xdmefmsb2ql::::res://Assets/Custom Character/player jump 48x48-Sheet.png<>uid://2o633c2owfk0::::res://Assets/Custom Character/player run 48x48-Sheet.png<>uid://dpwel3ngllv7g::::res://Assets/Custom Character/hurt-Sheet-Sheet.png<>uid://bjyqfg66513ri::::res://Assets/Custom Character/bar_sheet.png
+red_bubble.tscn::PackedScene::2776634694662011844::1719115262::0::1::::<><>::res://Scripts/red_bubble.gd<>uid://b7ctod628d8qg::::res://Assets/obstacles/bubble_red-Sheet.png
+green_bubble.tscn::PackedScene::1400079935725996649::1719115262::0::1::::<><>::res://Scripts/green_bubble.gd<>uid://bdy1lhrc37724::::res://Assets/obstacles/bubble-Sheet.png
+ghost.tscn::PackedScene::2244973452571018374::1719115262::0::1::::<><>::uid://cnksaux8016lj::::res://Assets/Custom Character/dash_effect.png<>res://Scripts/Ghost.gd
+mine.tscn::PackedScene::7993420251219142130::1719115262::0::1::::<><>::res://Scripts/balloon.gd<>uid://bsdh3bnqlpv8p::::res://Assets/obstacles/Mine.png<>uid://dxg5aq5m74v36::::res://Assets/obstacles/mine_explosion.png
+::res://Scripts/::1719115310
+balloon.gd::GDScript::-1::1719106838::0::1::::<>Node2D<>::
+player.gd::GDScript::-1::1719115310::0::1::::<>CharacterBody2D<>::
+red_bubble.gd::GDScript::-1::1719106882::0::1::::<>Node2D<>::
+green_bubble.gd::GDScript::-1::1719106882::0::1::::<>Node2D<>::
+Ghost.gd::GDScript::-1::1719100925::0::1::::<>Sprite2D<>::
+level.gd::GDScript::-1::1719108077::0::1::::<>Node2D<>::

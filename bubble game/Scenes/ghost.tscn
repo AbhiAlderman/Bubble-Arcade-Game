@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://68qnc173biew"]
+
+[ext_resource type="Texture2D" uid="uid://cnksaux8016lj" path="res://Assets/Custom Character/dash_effect.png" id="1_0qadq"]
+[ext_resource type="Script" path="res://Scripts/Ghost.gd" id="1_a3okr"]
+
+[node name="Ghost" type="Sprite2D"]
+modulate = Color(1, 1, 1, 0.662745)
+texture = ExtResource("1_0qadq")
+script = ExtResource("1_a3okr")

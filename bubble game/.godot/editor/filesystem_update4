@@ -8,3 +8,7 @@ res://Scripts/balloon.gd
 res://Scenes/green_bubble.tscn
 res://modulate_green.gd
 res://Scripts/green_bubble.gd
+res://Scripts/Ghost.gd
+res://Scenes/ghost.tscn
+res://Scripts/level.gd
+res://Scenes/mine.tscn
