@@ -1,43 +1,38 @@
-[gd_scene load_steps=11 format=3 uid="uid://cf6xu5nbej17"]
+[gd_scene load_steps=9 format=3 uid="uid://cf6xu5nbej17"]
 
-[ext_resource type="Texture2D" uid="uid://bdy1lhrc37724" path="res://Assets/obstacles/bubble-Sheet.png" id="1_gx71t"]
 [ext_resource type="Script" path="res://Scripts/balloon.gd" id="1_mbhs0"]
+[ext_resource type="Texture2D" uid="uid://c7w3j8khh6i1t" path="res://Assets/obstacles/Blue_BubbleV3.png" id="2_8fhoo"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_23kek"]
-atlas = ExtResource("1_gx71t")
+[sub_resource type="AtlasTexture" id="AtlasTexture_p43pt"]
+atlas = ExtResource("2_8fhoo")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_joqlk"]
-atlas = ExtResource("1_gx71t")
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8dtw"]
+atlas = ExtResource("2_8fhoo")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_elmua"]
-atlas = ExtResource("1_gx71t")
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8kfb"]
+atlas = ExtResource("2_8fhoo")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1if51"]
-atlas = ExtResource("1_gx71t")
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlc6a"]
+atlas = ExtResource("2_8fhoo")
 region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1xilb"]
-atlas = ExtResource("1_gx71t")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jm22l"]
-atlas = ExtResource("1_gx71t")
-region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_siea8"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_23kek")
+"texture": SubResource("AtlasTexture_p43pt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_joqlk")
+"texture": SubResource("AtlasTexture_n8dtw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_elmua")
+"texture": SubResource("AtlasTexture_k8kfb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n8dtw")
 }],
 "loop": true,
 "name": &"default",
@@ -45,19 +40,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1if51")
-}, {
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1xilb")
-}, {
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jm22l")
+"texture": SubResource("AtlasTexture_rlc6a")
 }, {
 "duration": 1.0,
 "texture": null
@@ -67,8 +50,8 @@ animations = [{
 "speed": 13.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_20201"]
-radius = 10.6434
+[sub_resource type="CircleShape2D" id="CircleShape2D_144a7"]
+radius = 14.3886
 
 [node name="balloon" type="Area2D" groups=["platform"]]
 scale = Vector2(1.6, 1.6)
@@ -79,10 +62,9 @@ script = ExtResource("1_mbhs0")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_siea8")
-animation = &"popping"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_20201")
+shape = SubResource("CircleShape2D_144a7")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

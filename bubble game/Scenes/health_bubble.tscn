@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://cfym0fe2jk6o3"]
+
+[ext_resource type="Script" path="res://Scripts/health_bubble.gd" id="1_yyk8c"]
+[ext_resource type="Texture2D" uid="uid://yyl1hbauf7u7" path="res://Assets/obstacles/Healing_Bubble.png" id="2_s33qm"]
+[ext_resource type="PackedScene" uid="uid://dhus88y4whqw4" path="res://Scenes/health_potion.tscn" id="2_yl5t2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sklim"]
+atlas = ExtResource("2_s33qm")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0tij"]
+atlas = ExtResource("2_s33qm")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5nrd"]
+atlas = ExtResource("2_s33qm")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0hyu4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sklim")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0tij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5nrd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0tij")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_usk3f"]
+radius = 11.875
+
+[node name="health_bubble" type="Area2D" groups=["health", "platform"]]
+z_index = 4
+scale = Vector2(1.6, 1.6)
+collision_layer = 4
+collision_mask = 33
+script = ExtResource("1_yyk8c")
+health_node = ExtResource("2_yl5t2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0hyu4")
+frame = 2
+frame_progress = 0.580229
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_usk3f")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

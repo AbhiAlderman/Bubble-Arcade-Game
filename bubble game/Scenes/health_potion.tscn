@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://dhus88y4whqw4"]
+
+[ext_resource type="Script" path="res://Scripts/health_potion.gd" id="1_bfmqt"]
+[ext_resource type="Texture2D" uid="uid://yyl1hbauf7u7" path="res://Assets/obstacles/Healing_Bubble.png" id="1_hfph2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvcij"]
+atlas = ExtResource("1_hfph2")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4djn"]
+atlas = ExtResource("1_hfph2")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6oju8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvcij")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4djn")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"despawning",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4jjn7"]
+radius = 7.07107
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57h8y"]
+size = Vector2(8, 5)
+
+[node name="health_potion" type="RigidBody2D"]
+script = ExtResource("1_bfmqt")
+
+[node name="area" type="Area2D" parent="." groups=["health"]]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="area"]
+sprite_frames = SubResource("SpriteFrames_6oju8")
+animation = &"despawning"
+frame_progress = 0.585918
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area"]
+visible = false
+shape = SubResource("CircleShape2D_4jjn7")
+
+[node name="Lifetime" type="Timer" parent="area"]
+wait_time = 8.0
+
+[node name="Despawn_Time" type="Timer" parent="area"]
+wait_time = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_57h8y")
+
+[connection signal="timeout" from="area/Lifetime" to="area" method="_on_lifetime_timeout"]
+[connection signal="timeout" from="area/Despawn_Time" to="area" method="_on_despawn_time_timeout"]

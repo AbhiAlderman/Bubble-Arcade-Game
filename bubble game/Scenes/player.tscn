@@ -226,7 +226,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"death",
-"speed": 10.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -541,8 +541,8 @@ shape = SubResource("CapsuleShape2D_oivha")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7dseh")
-animation = &"hit_stun"
-frame_progress = 0.210271
+animation = &"idle"
+frame_progress = 0.232542
 
 [node name="Timers" type="Node" parent="."]
 
@@ -550,6 +550,7 @@ frame_progress = 0.210271
 one_shot = true
 
 [node name="Death_Timer" type="Timer" parent="Timers"]
+wait_time = 1.5
 one_shot = true
 
 [node name="Dash_Timer" type="Timer" parent="Timers"]

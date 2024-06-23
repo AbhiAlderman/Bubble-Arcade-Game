@@ -1,8 +1,8 @@
 extends Node2D
 
 const POP_TIME = 0.2
-const RISE_SPEED = -80
 @onready var sprite = $AnimatedSprite2D
+var rise_speed: float = -80
 var bubble_state: states
 var pop_timer: float
 enum states{
@@ -24,7 +24,7 @@ func _process(delta):
 func _physics_process(delta):
 	match bubble_state:
 		states.RISING:
-			position.y += RISE_SPEED * delta
+			position.y += rise_speed * delta
 		states.POPPING:
 			if pop_timer <= 0:
 				queue_free()
@@ -35,7 +35,9 @@ func pop():
 	bubble_state = states.POPPING
 	pop_timer = POP_TIME
 
-
+func set_rise_speed(speed: float):
+	rise_speed = speed
+	
 func _on_area_entered(area):
 	if area.is_in_group("skybox"):
 		pop()

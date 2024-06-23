@@ -12,3 +12,9 @@ res://Scripts/Ghost.gd
 res://Scenes/ghost.tscn
 res://Scripts/level.gd
 res://Scenes/mine.tscn
+res://Scripts/gold_bubble.gd
+res://Scenes/gold_bubble.tscn
+res://Scripts/health_bubble.gd
+res://Scenes/health_bubble.tscn
+res://Scenes/health_potion.tscn
+res://Scripts/health_potion.gd

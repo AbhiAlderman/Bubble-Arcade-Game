@@ -50,7 +50,6 @@ enum states {
 func _ready():
 	player_state = states.GROUNDED
 	health = 3
-	change_health(0)
 func _process(delta):
 	animate()
 
@@ -227,7 +226,7 @@ func _on_flipping_timer_timeout():
 
 
 func _on_bubble_hitbox_area_entered(area):
-	if player_state == states.DASHING or player_state == states.HITSTUN:
+	if player_state == states.DASHING or player_state == states.HITSTUN or player_state == states.DEAD:
 		return
 	if area.is_in_group("platform") and position.y <= area.position.y:
 		bounce()
@@ -235,6 +234,11 @@ func _on_bubble_hitbox_area_entered(area):
 	elif area.is_in_group("trap"):
 		get_hit(area.position, -1)
 		area.pop()
+	if area.is_in_group("health"):
+		change_health(1)
+	if area.is_in_group("bonus"):
+		#some bonus points go here
+		pass
 		
 
 func _on_dash_timer_timeout():

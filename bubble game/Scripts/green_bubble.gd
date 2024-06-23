@@ -15,7 +15,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	sprite.modulate = Color.html("#72E218")
 	match bubble_state:
 		states.RISING:
 			sprite.play("default")

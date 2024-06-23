@@ -1,6 +1,9 @@
-res://Scenes/balloon.tscn::ec6bed032ba0870969fdb5a2be0e7e9c::1719102488::res://.godot/exported/133200997/export-665a3da6ef3ec2159677f72a3cedc351-balloon.scn
-res://Scenes/level.tscn::c562a4bd6855e592a5e7f972a340fb67::1719102549::res://.godot/exported/133200997/export-509c53c765b75d897e8314a88ec6c376-level.scn
-res://Scenes/player.tscn::bd444e43cc5eb4be5d922502d4dc75f4::1719102488::res://.godot/exported/133200997/export-1753c997600d68ab5d20ae99fddb15c6-player.scn
-res://Scenes/red_bubble.tscn::97d29998ba160f9156401c84c0b466ed::1719102488::res://.godot/exported/133200997/export-a2b6a2cd3d33baca2467b983335e4edc-red_bubble.scn
-res://Scenes/green_bubble.tscn::8e6aca11ce50b201b3d4912834eabef5::1719102488::res://.godot/exported/133200997/export-6e805ed3e231df91febbe390a348ae4c-green_bubble.scn
-res://Scenes/ghost.tscn::74fbc59c9cf533de9d57054623bd8ba9::1719102488::res://.godot/exported/133200997/export-6a99f35563fecd8e1c7bb67110cbf436-ghost.scn
+res://Scenes/balloon.tscn::19b4fdfb711012d6187eab802be00fb7::1719130223::res://.godot/exported/133200997/export-665a3da6ef3ec2159677f72a3cedc351-balloon.scn
+res://Scenes/level.tscn::9654f8dd32a5a395148068cf57e18e59::1719130223::res://.godot/exported/133200997/export-509c53c765b75d897e8314a88ec6c376-level.scn
+res://Scenes/player.tscn::cf71f3bae209767ab74543055a9ada25::1719130223::res://.godot/exported/133200997/export-1753c997600d68ab5d20ae99fddb15c6-player.scn
+res://Scenes/red_bubble.tscn::dab79123c86f4a33d22f170fcd5c0ff4::1719130223::res://.godot/exported/133200997/export-a2b6a2cd3d33baca2467b983335e4edc-red_bubble.scn
+res://Scenes/ghost.tscn::74fbc59c9cf533de9d57054623bd8ba9::1719130223::res://.godot/exported/133200997/export-6a99f35563fecd8e1c7bb67110cbf436-ghost.scn
+res://Scenes/mine.tscn::faa35cd5777992ab9f802914b163f1f2::1719130223::res://.godot/exported/133200997/export-15666458f2e86cc726e6f9209fab4bfd-mine.scn
+res://Scenes/gold_bubble.tscn::7a81a327f4438b5f6eabd05951233235::1719130223::res://.godot/exported/133200997/export-362de6ea0cb4a76fc5a09b96feb1e5a1-gold_bubble.scn
+res://Scenes/health_bubble.tscn::b3bbe6dce129bce10e901b79856877cd::1719130223::res://.godot/exported/133200997/export-8588c995c0a6ae8887221661a12aec8f-health_bubble.scn
+res://Scenes/health_potion.tscn::b94bb48f3d8c3af1dfeec02a113bf396::1719130223::res://.godot/exported/133200997/export-860216e0d3e704caa9e641b0ce84191a-health_potion.scn
