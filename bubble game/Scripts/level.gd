@@ -86,6 +86,7 @@ const LAYER_SIZE: int = 200
 @onready var flash_damage_timer = $Life_Heads/Flash_Damage_Timer
 @onready var wave_downtime = $Spawning/Wave_Downtime
 @onready var flash_heal_timer = $Life_Heads/Flash_Heal_Timer
+@onready var score_display = $UI/Score_Display
 
 const BLUE_BUBBLE = preload("res://Scenes/balloon.tscn")
 const RED_BUBBLE = preload("res://Scenes/red_bubble.tscn")
@@ -95,11 +96,14 @@ const HEALTH_BUBBLE = preload("res://Scenes/health_bubble.tscn")
 const INIT_DOWNTIME: float = 3
 
 #variables
-var rng: RandomNumberGenerator = RandomNumberGenerator.new()
-var next_bubble: Area2D
+#player variables
 var player_health: int
 var flash_damage: bool
 var flash_heal: bool
+var score: float
+#spawning variables
+var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+var next_bubble: Area2D
 var wave_number: int
 var num_bubbles: int
 var num_traps: int
@@ -127,15 +131,15 @@ func _ready():
 	wave_number = -1
 	wave_downtime.wait_time = INIT_DOWNTIME
 	wave_downtime.start()
+	score = 0
+	score_display.text = "SCORE: " + str(score)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	score_display.text = "SCORE: " + str(score)
 	match player_health:
 		0:
-			if flash_damage:
-				head_1.play("damaged")
-			else:
-				head_1.play("invisible")
+			head_1.play("invisible")
 			head_2.play("invisible")
 			head_3.play("invisible")
 		1:
@@ -310,6 +314,9 @@ func create_props(amount: int, trap: bool, top_range: float, bottom_range: float
 		next_bubble.position = Vector2(
 			rng.randf_range(top_left.position.x, top_right.position.x), rng.randf_range(top_range, bottom_range))
 		add_child(next_bubble)
+
+func add_points(points: float):
+	score += points
 	
 func _on_flash_damage_timer_timeout():
 	flash_damage = false

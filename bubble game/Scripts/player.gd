@@ -30,6 +30,8 @@ var dash_aim_x: float #where dash is aiming based on wasd
 var dash_aim_y: float
 var dash_pressed: bool = false
 var health: int
+
+var bubble_streak: int = 0
 enum states {
 	GROUNDED,
 	AIRBORNE,
@@ -92,6 +94,7 @@ func handle_gravity(delta):
 	else:
 		flipping = false
 		player_state = states.GROUNDED
+		bubble_streak = 0
 		jump_time = 0
 
 func handle_jump_buffer(delta):
@@ -230,16 +233,24 @@ func _on_bubble_hitbox_area_entered(area):
 		return
 	if area.is_in_group("platform") and position.y <= area.position.y:
 		bounce()
+		if area.is_in_group("health"):
+			change_health(1)
+		if area.is_in_group("point"):
+			#gain a point for bouncing off this
+			bubble_streak += 1
+			update_score()
+		elif area.is_in_group("bonus"):
+			bubble_streak *= 2
+			update_score()
 		area.pop()
 	elif area.is_in_group("trap"):
 		get_hit(area.position, -1)
+		bubble_streak = 0
 		area.pop()
-	if area.is_in_group("health"):
-		change_health(1)
-	if area.is_in_group("bonus"):
-		#some bonus points go here
-		pass
 		
+#update the visible score display
+func update_score():
+	get_parent().add_points(bubble_streak)
 
 func _on_dash_timer_timeout():
 	if player_state == states.DEAD:

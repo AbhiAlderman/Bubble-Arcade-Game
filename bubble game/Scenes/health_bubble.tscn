@@ -39,7 +39,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_usk3f"]
 radius = 11.875
 
-[node name="health_bubble" type="Area2D" groups=["health", "platform"]]
+[node name="health_bubble" type="Area2D" groups=["health", "platform", "point"]]
 z_index = 4
 scale = Vector2(1.6, 1.6)
 collision_layer = 4

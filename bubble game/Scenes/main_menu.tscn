@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwbchbfo3br3y"]
+
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_gmd4i"]
+[ext_resource type="FontFile" uid="uid://diqnt3wxqeb3s" path="res://Assets/UI/CyberpunkCraftpixPixel.otf" id="1_v7216"]
+[ext_resource type="PackedScene" uid="uid://biosucxvry71e" path="res://Scenes/leaderboard.tscn" id="3_gi552"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fyjwj"]
+font = ExtResource("1_v7216")
+font_size = 40
+font_color = Color(1, 0, 1, 1)
+outline_size = 3
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="Main_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gmd4i")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Enter Name" type="Node" parent="."]
+
+[node name="LineEdit" type="LineEdit" parent="Enter Name"]
+offset_left = -86.0
+offset_top = 34.0
+offset_right = 77.0
+offset_bottom = 78.0
+scale = Vector2(1.08, 1.08)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_v7216")
+theme_override_font_sizes/font_size = 26
+max_length = 8
+expand_to_text_length = true
+
+[node name="Enter Your Name" type="Label" parent="Enter Name"]
+offset_left = -158.0
+offset_top = -18.0
+offset_right = 247.0
+offset_bottom = 25.0
+text = "SET YOUR NAME"
+label_settings = SubResource("LabelSettings_fyjwj")
+
+[node name="Game Name" type="Label" parent="."]
+layout_mode = 0
+offset_left = -262.0
+offset_top = -253.0
+offset_right = 265.0
+offset_bottom = -164.0
+text = "MY GAME NAME IS GOING 
+TO GO HERE!!!"
+label_settings = SubResource("LabelSettings_fyjwj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="leaderboard" parent="." instance=ExtResource("3_gi552")]
+
+[connection signal="text_submitted" from="Enter Name/LineEdit" to="." method="_on_line_edit_text_submitted"]

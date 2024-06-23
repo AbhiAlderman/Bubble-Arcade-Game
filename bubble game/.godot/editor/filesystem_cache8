@@ -1,8 +1,8 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1719102926
-export_presets.cfg::TextFile::-1::1719102572::0::1::::<><>::
+::res://::1719181746
+export_presets.cfg::TextFile::-1::1719130260::0::1::::<><>::
 modulate_green.gd::GDScript::-1::1719084861::0::1::::<>AnimatedSprite2D<>::
-::res://Assets/::1719088759
+::res://Assets/::1719169515
 ::res://Assets/Custom Character/::1719128580
 bar_sheet.png::CompressedTexture2D::3068646107865295882::1719099084::1719099086::1::::<><>::
 damaged_head.png::CompressedTexture2D::2338406344182190470::1719107623::1719107625::1::::<><>::
@@ -23,7 +23,7 @@ cavesofgallet.png::CompressedTexture2D::2417674581406199993::1719053403::1719053
 cavesofgallet_tiles.png::CompressedTexture2D::3334203733988950245::1719053403::1719053433::1::::<><>::
 head.png::CompressedTexture2D::4277941961818764396::1719104093::1719104097::1::::<><>::
 textured_block.png::CompressedTexture2D::4291147670356829041::1719117650::1719117658::1::::<><>::
-::res://Assets/obstacles/::1719129417
+::res://Assets/obstacles/::1719180673
 Blue_BubbleV2.png::CompressedTexture2D::4616961470839139364::1719123674::1719123676::1::::<><>::
 Blue_BubbleV3.png::CompressedTexture2D::7066018571382388335::1719129399::1719129434::1::::<><>::
 bubble-Sheet.png::CompressedTexture2D::2648130960304224755::1719053403::1719053433::1::::<><>::
@@ -34,8 +34,8 @@ gold_bubble.png::CompressedTexture2D::1446002393066829437::1719123519::171912353
 Green_Bubble.png::CompressedTexture2D::4005202306087500158::1719123582::1719123586::1::::<><>::
 Green_BubbleV3.png::CompressedTexture2D::9024101796463736567::1719129417::1719129434::1::::<><>::
 Healing_Bubble.png::CompressedTexture2D::1734792000207386608::1719117851::1719117858::1::::<><>::
-Mine.png::CompressedTexture2D::3656488096966654637::1719102339::1719102343::1::::<><>::
-mine_explosion.png::CompressedTexture2D::8787814118368288275::1719105965::1719105970::1::::<><>::
+Mine.png::CompressedTexture2D::3656488096966654637::1719180509::1719180515::1::::<><>::
+mine_explosion.png::CompressedTexture2D::8787814118368288275::1719180571::1719180673::1::::<><>::
 Red_BubbleV4.png::CompressedTexture2D::4383156192685386887::1719129408::1719129434::1::::<><>::
 ::res://Assets/Prototype Character/::1719053403
 ::res://Assets/Prototype Character/Asset Packs 1-4 (final)/::1719093421
@@ -54,24 +54,53 @@ player air spin 48x48.png::CompressedTexture2D::5992513423964710657::1719053403:
 ::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V3/::1719053403
 ::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V3/Player Death/::1719093196
 Player Death 64x64.png::CompressedTexture2D::7008872474527642981::1719093177::1719093196::1::::<><>::
-::res://Scenes/::1719129380
-balloon.tscn::PackedScene::152623973485237384::1719129213::0::1::::<><>::uid://bdy1lhrc37724::::res://Assets/obstacles/bubble-Sheet.png<>res://Scripts/balloon.gd<>uid://b61qxfdicce2o::::res://Assets/obstacles/Blue_BubbleV2.png
-level.tscn::PackedScene::6757970863757621107::1719129380::0::1::::<><>::uid://bape0nxfqw7mr::::res://Assets/level/cavesofgallet.png<>res://Scripts/level.gd<>uid://6gvd61vivt27::::res://Scenes/player.tscn<>uid://cjsi5dil0klxv::::res://Assets/level/basic_tileset.png<>uid://8k0hfy8n6kdq::::res://Assets/Custom Character/damaged_head.png<>uid://b2ewts6edoqj6::::res://Assets/level/textured_block.png<>uid://bk1gvcojepf37::::res://Assets/level/animated_head_sheet.png<>uid://b5dyb7msrnwqd::::res://Assets/Custom Character/heart_head.png<>uid://6ebefwbg564r::::res://Assets/Custom Character/happy_head.png
-player.tscn::PackedScene::2189522502887625162::1719129213::0::1::::<><>::res://Scripts/player.gd<>uid://c64fduelcmbwv::::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V3/Player Death/Player Death 64x64.png<>uid://68qnc173biew::::res://Scenes/ghost.tscn<>uid://dx615fty2q67s::::res://Assets/Custom Character/Player Roll 48x48-Sheet.png<>uid://boxnrsfuvi6my::::res://Assets/Custom Character/player air spin 48x48-Sheet.png<>uid://dlllb53r4pvn8::::res://Assets/Custom Character/Player Idle 48x48-Sheet.png<>uid://b1xdmefmsb2ql::::res://Assets/Custom Character/player jump 48x48-Sheet.png<>uid://2o633c2owfk0::::res://Assets/Custom Character/player run 48x48-Sheet.png<>uid://dpwel3ngllv7g::::res://Assets/Custom Character/hurt-Sheet-Sheet.png<>uid://bjyqfg66513ri::::res://Assets/Custom Character/bar_sheet.png
-red_bubble.tscn::PackedScene::2776634694662011844::1719129213::0::1::::<><>::res://Scripts/red_bubble.gd<>uid://b7ctod628d8qg::::res://Assets/obstacles/bubble_red-Sheet.png
-green_bubble.tscn::PackedScene::1400079935725996649::1719129213::0::1::::<><>::res://Scripts/green_bubble.gd<>uid://b61qxfdicce2o::::res://Assets/obstacles/Blue_BubbleV2.png<>uid://bdy1lhrc37724::::res://Assets/obstacles/bubble-Sheet.png
-ghost.tscn::PackedScene::2244973452571018374::1719129213::0::1::::<><>::uid://cnksaux8016lj::::res://Assets/Custom Character/dash_effect.png<>res://Scripts/Ghost.gd
-mine.tscn::PackedScene::7993420251219142130::1719129213::0::1::::<><>::res://Scripts/balloon.gd<>uid://bsdh3bnqlpv8p::::res://Assets/obstacles/Mine.png<>uid://dxg5aq5m74v36::::res://Assets/obstacles/mine_explosion.png
-gold_bubble.tscn::PackedScene::4677179399732743896::1719129213::0::1::::<><>::res://Scripts/gold_bubble.gd<>uid://uuppicdjenjh::::res://Assets/obstacles/gold_bubble.png
-health_bubble.tscn::PackedScene::5174104170469799860::1719129213::0::1::::<><>::res://Scripts/health_bubble.gd<>uid://yyl1hbauf7u7::::res://Assets/obstacles/Healing_Bubble.png<>uid://dhus88y4whqw4::::res://Scenes/health_potion.tscn
-health_potion.tscn::PackedScene::7693025120388565121::1719129213::0::1::::<><>::res://Scripts/health_potion.gd<>uid://yyl1hbauf7u7::::res://Assets/obstacles/Healing_Bubble.png
-::res://Scripts/::1719129380
+::res://Assets/UI/::1719171467
+CyberpunkCraftpixPixel.otf::FontFile::7754627600944732366::1718577040::1719169611::1::::<><>::
+GUI.png::CompressedTexture2D::8169004709703919566::1719171386::1719171467::1::::<><>::
+::res://Assets/UI/Elv Pixel Font 2/::1719169577
+::res://Assets/UI/Elv Pixel Font 2/Elv Pixel Font 2/::1703703563
+License.txt::TextFile::-1::1703694262::0::1::::<><>::
+Read Me.txt::TextFile::-1::1699962318::0::1::::<><>::
+::res://Assets/UI/Elv Pixel Font 2/Elv Pixel Font 2/OpenType/::1719169611
+elv-pixels-04.otf::FontFile::6602265407045761051::1703957350::1719169611::1::::<><>::
+elv-pixels-05.otf::FontFile::7197600340888261918::1703963300::1719169611::1::::<><>::
+elv-pixels-06.otf::FontFile::2961648429904732479::1703960948::1719169611::1::::<><>::
+::res://Assets/UI/Elv Pixel Font 2/Elv Pixel Font 2/TrueType/::1719169611
+elv-pixels-04.ttf::FontFile::8281122480620402680::1703957350::1719169611::1::::<><>::
+elv-pixels-05.ttf::FontFile::1582807161055523051::1703963300::1719169611::1::::<><>::
+elv-pixels-06.ttf::FontFile::8787644811476353721::1703960948::1719169611::1::::<><>::
+::res://Assets/UI/Elv Pixel Fonts/::1719169586
+::res://Assets/UI/Elv Pixel Fonts/Elv Pixel Fonts/::1703694053
+License.txt::TextFile::-1::1703694262::0::1::::<><>::
+Read Me.txt::TextFile::-1::1699962318::0::1::::<><>::
+::res://Assets/UI/Elv Pixel Fonts/Elv Pixel Fonts/OpenType/::1719169611
+elv-pixels-01.otf::FontFile::2780816562960130010::1703858208::1719169611::1::::<><>::
+elv-pixels-02.otf::FontFile::2152164010579072058::1703937574::1719169611::1::::<><>::
+elv-pixels-03.otf::FontFile::7403354055925204187::1703937588::1719169611::1::::<><>::
+::res://Assets/UI/Elv Pixel Fonts/Elv Pixel Fonts/TrueType/::1719169611
+elv-pixels-01.ttf::FontFile::7675811946380689017::1703858208::1719169611::1::::<><>::
+elv-pixels-02.ttf::FontFile::608714697024820945::1703937574::1719169611::1::::<><>::
+elv-pixels-03.ttf::FontFile::7716188645374966261::1703937586::1719169611::1::::<><>::
+::res://Scenes/::1719181737
+balloon.tscn::PackedScene::152623973485237384::1719181736::0::1::::<><>::res://Scripts/balloon.gd<>uid://c7w3j8khh6i1t::::res://Assets/obstacles/Blue_BubbleV3.png
+ghost.tscn::PackedScene::2244973452571018374::1719181736::0::1::::<><>::uid://cnksaux8016lj::::res://Assets/Custom Character/dash_effect.png<>res://Scripts/Ghost.gd
+gold_bubble.tscn::PackedScene::4677179399732743896::1719181736::0::1::::<><>::res://Scripts/gold_bubble.gd<>uid://uuppicdjenjh::::res://Assets/obstacles/gold_bubble.png
+health_bubble.tscn::PackedScene::5174104170469799860::1719181736::0::1::::<><>::res://Scripts/health_bubble.gd<>uid://yyl1hbauf7u7::::res://Assets/obstacles/Healing_Bubble.png<>uid://dhus88y4whqw4::::res://Scenes/health_potion.tscn
+health_potion.tscn::PackedScene::7693025120388565121::1719181736::0::1::::<><>::res://Scripts/health_potion.gd<>uid://yyl1hbauf7u7::::res://Assets/obstacles/Healing_Bubble.png
+leaderboard.tscn::PackedScene::2977961484657135912::1719181737::0::1::::<><>::res://Scripts/leaderboard.gd
+level.tscn::PackedScene::6757970863757621107::1719181735::0::1::::<><>::uid://bape0nxfqw7mr::::res://Assets/level/cavesofgallet.png<>res://Scripts/level.gd<>uid://6gvd61vivt27::::res://Scenes/player.tscn<>uid://cjsi5dil0klxv::::res://Assets/level/basic_tileset.png<>uid://8k0hfy8n6kdq::::res://Assets/Custom Character/damaged_head.png<>uid://b2ewts6edoqj6::::res://Assets/level/textured_block.png<>uid://bk1gvcojepf37::::res://Assets/level/animated_head_sheet.png<>uid://b5dyb7msrnwqd::::res://Assets/Custom Character/heart_head.png<>uid://6ebefwbg564r::::res://Assets/Custom Character/happy_head.png<>uid://diqnt3wxqeb3s::::res://Assets/UI/CyberpunkCraftpixPixel.otf
+main_menu.tscn::PackedScene::3932773616947685980::1719181736::0::1::::<><>::uid://diqnt3wxqeb3s::::res://Assets/UI/CyberpunkCraftpixPixel.otf<>uid://donekxb50x8d3::::res://Assets/UI/GUI.png
+mine.tscn::PackedScene::7993420251219142130::1719181736::0::1::::<><>::res://Scripts/balloon.gd<>uid://bsdh3bnqlpv8p::::res://Assets/obstacles/Mine.png<>uid://dxg5aq5m74v36::::res://Assets/obstacles/mine_explosion.png
+player.tscn::PackedScene::2189522502887625162::1719181736::0::1::::<><>::res://Scripts/player.gd<>uid://c64fduelcmbwv::::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V3/Player Death/Player Death 64x64.png<>uid://68qnc173biew::::res://Scenes/ghost.tscn<>uid://dx615fty2q67s::::res://Assets/Custom Character/Player Roll 48x48-Sheet.png<>uid://boxnrsfuvi6my::::res://Assets/Custom Character/player air spin 48x48-Sheet.png<>uid://dlllb53r4pvn8::::res://Assets/Custom Character/Player Idle 48x48-Sheet.png<>uid://b1xdmefmsb2ql::::res://Assets/Custom Character/player jump 48x48-Sheet.png<>uid://2o633c2owfk0::::res://Assets/Custom Character/player run 48x48-Sheet.png<>uid://dpwel3ngllv7g::::res://Assets/Custom Character/hurt-Sheet-Sheet.png<>uid://bjyqfg66513ri::::res://Assets/Custom Character/bar_sheet.png
+red_bubble.tscn::PackedScene::2776634694662011844::1719181736::0::1::::<><>::res://Scripts/red_bubble.gd<>uid://b3ph7bcsxp8n8::::res://Assets/obstacles/Red_BubbleV4.png
+::res://Scripts/::1719181627
 balloon.gd::GDScript::-1::1719119713::0::1::::<>Node2D<>::
-player.gd::GDScript::-1::1719128962::0::1::::<>CharacterBody2D<>::
-red_bubble.gd::GDScript::-1::1719106882::0::1::::<>Node2D<>::
-green_bubble.gd::GDScript::-1::1719106882::0::1::::<>Node2D<>::
 Ghost.gd::GDScript::-1::1719100925::0::1::::<>Sprite2D<>::
-level.gd::GDScript::-1::1719129380::0::1::::<>Node2D<>::
 gold_bubble.gd::GDScript::-1::1719123788::0::1::::<>Node2D<>::
+green_bubble.gd::GDScript::-1::1719129583::0::1::::<>Node2D<>::
 health_bubble.gd::GDScript::-1::1719125132::0::1::::<>Node2D<>::
 health_potion.gd::GDScript::-1::1719125063::0::1::::<>RigidBody2D<>::
+leaderboard.gd::GDScript::-1::1719181627::0::1::::<>Node<>::
+level.gd::GDScript::-1::1719170089::0::1::::<>Node2D<>::
+player.gd::GDScript::-1::1719170589::0::1::::<>CharacterBody2D<>::
+red_bubble.gd::GDScript::-1::1719106882::0::1::::<>Node2D<>::

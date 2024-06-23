@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://c3ju17pgxmxjv"]
+[gd_scene load_steps=53 format=3 uid="uid://c3ju17pgxmxjv"]
 
 [ext_resource type="Texture2D" uid="uid://bape0nxfqw7mr" path="res://Assets/level/cavesofgallet.png" id="1_k2ad0"]
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_tjfhd"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bk1gvcojepf37" path="res://Assets/level/animated_head_sheet.png" id="4_xigko"]
 [ext_resource type="Texture2D" uid="uid://b5dyb7msrnwqd" path="res://Assets/Custom Character/heart_head.png" id="7_ujdb2"]
 [ext_resource type="Texture2D" uid="uid://6ebefwbg564r" path="res://Assets/Custom Character/happy_head.png" id="8_kpdit"]
+[ext_resource type="FontFile" uid="uid://diqnt3wxqeb3s" path="res://Assets/UI/CyberpunkCraftpixPixel.otf" id="10_npoub"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_agq6s"]
 texture = ExtResource("1_k2ad0")
@@ -2062,6 +2063,13 @@ animations = [{
 "speed": 2.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_rijmu"]
+font = ExtResource("10_npoub")
+outline_size = 3
+outline_color = Color(1, 0, 1, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+
 [node name="level" type="Node2D"]
 script = ExtResource("1_tjfhd")
 
@@ -2133,6 +2141,20 @@ position = Vector2(312, 196)
 position = Vector2(-306, 196)
 
 [node name="Wave_Downtime" type="Timer" parent="Spawning"]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Score_Display" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = -151.0
+offset_top = 68.0
+offset_right = 103.0
+offset_bottom = 91.0
+label_settings = SubResource("LabelSettings_rijmu")
 
 [connection signal="timeout" from="Life_Heads/Flash_Damage_Timer" to="." method="_on_flash_damage_timer_timeout"]
 [connection signal="timeout" from="Life_Heads/Flash_Heal_Timer" to="." method="_on_flash_heal_timer_timeout"]

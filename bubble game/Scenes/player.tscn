@@ -1,7 +1,7 @@
 [gd_scene load_steps=76 format=3 uid="uid://6gvd61vivt27"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_qs0df"]
-[ext_resource type="Texture2D" uid="uid://c64fduelcmbwv" path="res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V3/Player Death/Player Death 64x64.png" id="2_3clv6"]
+[ext_resource type="Texture2D" path="res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V3/Player Death/Player Death 64x64.png" id="2_3clv6"]
 [ext_resource type="PackedScene" uid="uid://68qnc173biew" path="res://Scenes/ghost.tscn" id="2_k7eyv"]
 [ext_resource type="Texture2D" uid="uid://dx615fty2q67s" path="res://Assets/Custom Character/Player Roll 48x48-Sheet.png" id="2_ty88i"]
 [ext_resource type="Texture2D" uid="uid://boxnrsfuvi6my" path="res://Assets/Custom Character/player air spin 48x48-Sheet.png" id="3_7spjg"]
