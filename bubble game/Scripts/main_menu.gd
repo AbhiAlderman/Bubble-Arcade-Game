@@ -1,6 +1,6 @@
 extends Control
 
-const naughty_words: Array = ["fuck", "shit", "bitch", "nigga", "nigger", "sh1t", "fxck", "bastard", "dick", "faggot", "pussy", "retard"]
+const naughty_words: Array = ["fuck", "shit", "bitch", "penis", "cock", "nigga", "nigger", "sh1t", "fxck", "bastard", "dick", "faggot", "pussy", "retard"]
 const naughty_words_specific: Array = ["ass", "", "fag", "fagg"]
 const BLUE_BUBBLE = preload("res://Scenes/balloon.tscn")
 @onready var leaderboard = preload("res://Scenes/leaderboard_new.tscn")
@@ -23,6 +23,7 @@ var left_bubble
 var right_bubble
 
 var leaderboard_node
+var name_ok: bool
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	leaderboard_node = leaderboard.instantiate()
@@ -87,9 +88,11 @@ func _on_right_spawntimer_timeout():
 
 
 func _on_button_pressed():
-	if check_text(line_edit.text):
-		start_timer.start()
-
+	check_text(line_edit.text)
+		
+		
+func start_game():
+	start_timer.start()
 
 func _on_check_length_timeout():
 	check.play("invisible")

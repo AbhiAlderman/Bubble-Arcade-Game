@@ -111,11 +111,13 @@ func _on_leaderboard_request_completed(result, response_code, headers, body):
 	json.parse(body.get_string_from_utf8())
 	
 	# Print data
+	print("LEADERBOARD DATA")
 	print(json.get_data())
 	
 	# Formatting as a leaderboard
 	var leaderboardFormatted = ""
-	for n in min(json.get_data().size() - 1, 5):
+	for n in min(json.get_data().items.size(), 11):
+		print("leaderboard added entry for: " + str(json.get_data().items[n].player.name))
 		leaderboardFormatted += str(json.get_data().items[n].rank)+str(". ")
 		leaderboardFormatted += str(json.get_data().items[n].player.name)+str(" - ")
 		leaderboardFormatted += str(json.get_data().items[n].score)+str("\n")
@@ -157,6 +159,7 @@ func _on_player_set_name_request_completed(result, response_code, headers, body)
 	var data = json.get_data()
 	print(json.get_data())
 	set_name_http.queue_free()
+	get_parent().start_game()
 
 func _get_player_name():
 	print("Getting player name")

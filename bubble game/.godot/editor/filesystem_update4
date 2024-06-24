@@ -1,3 +1,13 @@
+res://Scenes/leaderboard_new.tscn
+res://Scripts/leaderboard.gd
+res://Scenes/player.tscn
+res://Scenes/balloon.tscn
+res://Scenes/red_bubble.tscn
+res://Scenes/ghost.tscn
+res://Scenes/mine.tscn
+res://Scenes/missile.tscn
+res://Scenes/gold_bubble.tscn
 res://Scenes/main_menu.tscn
 res://Scenes/level_new.tscn
 res://Scenes/display_board.tscn
+res://Scripts/main_menu.gd

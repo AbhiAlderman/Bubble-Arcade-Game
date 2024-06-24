@@ -2353,10 +2353,10 @@ offset_bottom = -135.0
 [node name="play_again" type="Label" parent="UI"]
 z_index = 10
 layout_mode = 0
-offset_left = -125.0
-offset_top = -98.0
-offset_right = 137.0
-offset_bottom = -75.0
+offset_left = -127.0
+offset_top = -352.0
+offset_right = 135.0
+offset_bottom = -329.0
 text = "PRESS JUMP TO PLAY AGAIN"
 label_settings = SubResource("LabelSettings_01nh4")
 
@@ -2401,8 +2401,9 @@ shape = SubResource("RectangleShape2D_shwmp")
 
 [node name="show_controls" type="AnimatedSprite2D" parent="display_controls"]
 position = Vector2(17, -166)
+rotation = -0.00523599
 sprite_frames = SubResource("SpriteFrames_ddtmp")
-animation = &"invisible"
+animation = &"dash"
 
 [node name="show_timer" type="Timer" parent="display_controls"]
 wait_time = 3.0
