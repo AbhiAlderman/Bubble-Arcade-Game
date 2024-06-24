@@ -2,9 +2,10 @@ extends Node2D
 
 const POP_TIME = 0.2
 @onready var sprite = $AnimatedSprite2D
-var rise_speed: float = -80
+var rise_speed: float = -85
 var bubble_state: states
 var pop_timer: float
+var color: String = ""
 enum states{
 	RISING,
 	POPPING
@@ -17,9 +18,9 @@ func _ready():
 func _process(delta):
 	match bubble_state:
 		states.RISING:
-			sprite.play("default")
+			sprite.play("default: " + color)
 		states.POPPING:
-			sprite.play("popping")
+			sprite.play("popping: " + color)
 
 func _physics_process(delta):
 	match bubble_state:
@@ -31,6 +32,16 @@ func _physics_process(delta):
 			else:
 				pop_timer -= delta
 
+func set_green(green: bool):
+	if not green:
+		color = ""
+	else:
+		color = "green"
+func set_dark(dark: bool):
+	if not dark:
+		color = ""
+	else:
+		color = "dark"
 func pop():
 	bubble_state = states.POPPING
 	pop_timer = POP_TIME

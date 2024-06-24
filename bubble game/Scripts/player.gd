@@ -18,6 +18,11 @@ const JUMP_HOLD_TIME: float = 0.2
 const DASH_SPEED:float = 700
 const DASH_COOLDOWN_TIME: float = 3
 const KNOCKBACK_VECTOR: Vector2 = Vector2(400, -400)
+const MAX_BUBBLE_STREAK: int = 99
+
+const MAX_BOUNCE_PITCH: float = 3.5
+const MIN_BOUNCE_PITCH: float = 0.35
+
 
 var can_dash = true
 var jump_buffer_time_left: float = 0.0
@@ -37,7 +42,8 @@ enum states {
 	AIRBORNE,
 	DASHING,
 	HITSTUN,
-	DEAD
+	DEAD,
+	FULL_DEAD
 }
 
 @onready var hitstun_timer = $Timers/Hitstun_Timer
@@ -48,15 +54,31 @@ enum states {
 @onready var death_timer = $Timers/Death_Timer
 @onready var dash_bar = $dash_bar
 @export var ghost_node: PackedScene
+@onready var combo_display = $combo_display
+#sounds
+@onready var jump_1 = $Sounds/Jump_1
+@onready var jump_2 = $Sounds/Jump_2
+@onready var jump_3 = $Sounds/Jump_3
+@onready var dash = $Sounds/Dash
+@onready var hit_1 = $Sounds/Hit_1
+@onready var hit_2 = $Sounds/Hit_2
+@onready var heal = $Sounds/Heal
+
 
 func _ready():
 	player_state = states.GROUNDED
 	health = 3
+	combo_display.visible = false
+	jump_3.pitch_scale = MIN_BOUNCE_PITCH
+	
 func _process(delta):
 	animate()
 
 func _physics_process(delta):
-	if dying:
+	if player_state == states.FULL_DEAD:
+		velocity.y += delta * FALL_NORMAL_GRAVITY
+		move_and_slide()
+	elif dying:
 		player_state = states.DEAD
 		velocity.y += delta * FALL_NORMAL_GRAVITY
 		move_and_slide()
@@ -95,6 +117,7 @@ func handle_gravity(delta):
 		flipping = false
 		player_state = states.GROUNDED
 		bubble_streak = 0
+		jump_3.pitch_scale = MIN_BOUNCE_PITCH
 		jump_time = 0
 
 func handle_jump_buffer(delta):
@@ -105,6 +128,7 @@ func handle_jump_buffer(delta):
 func handle_jump():
 	if jump_buffer_time_left > 0:
 		if player_state == states.GROUNDED:
+			jump_2.play()
 			velocity.y = JUMP_VELOCITY
 			jump_buffer_time_left = 0
 			jump_time = 0
@@ -127,6 +151,7 @@ func handle_dash():
 		else:
 			velocity.x *= 0.9
 			velocity.y *= 0.9
+		dash.play()
 		dash_timer.start()
 		dash_cooldown_timer.start()
 	
@@ -148,6 +173,9 @@ func handle_flip():
 func bounce():
 	velocity.y = BOUNCE_VELOCITY
 	flipping = true
+	jump_3.play()
+	print(jump_3.pitch_scale)
+	jump_3.pitch_scale = 0.032 * bubble_streak + 0.3
 
 func change_health(amount: int):
 	health = min(health + amount, 3)
@@ -169,12 +197,15 @@ func die():
 	dying = true
 	if player_state != states.DEAD:
 		player_state = states.DEAD
+		hit_2.play()
 		death_timer.start()
 	else:
 		pass
 
 func handle_death():
-	get_tree().reload_current_scene()
+	player_state = states.FULL_DEAD
+	print("CALLING GAME OVER")
+	get_parent().game_over()
 
 func add_ghost():
 	var ghost = ghost_node.instantiate()
@@ -214,11 +245,18 @@ func animate():
 			sprite.play("hit_stun")
 		states.DEAD:
 			sprite.play("death")
+		states.FULL_DEAD:
+			sprite.play("dead")
 	if can_dash:
 		dash_bar.play("nothing")
 	else:
 		dash_bar.play("loading")
-			
+	if bubble_streak < 1:
+		combo_display.visible = false
+		combo_display.text = ""
+	else:
+		combo_display.visible = true
+		combo_display.text = "+ " + str(bubble_streak)
 func _on_death_timer_timeout():
 	handle_death()
 
@@ -229,31 +267,40 @@ func _on_flipping_timer_timeout():
 
 
 func _on_bubble_hitbox_area_entered(area):
-	if player_state == states.DASHING or player_state == states.HITSTUN or player_state == states.DEAD:
+	if player_state == states.DASHING or player_state == states.HITSTUN or player_state == states.DEAD or player_state == states.FULL_DEAD:
 		return
 	if area.is_in_group("platform") and position.y <= area.position.y:
 		bounce()
 		if area.is_in_group("health"):
 			change_health(1)
+			heal.play()
 		if area.is_in_group("point"):
 			#gain a point for bouncing off this
-			bubble_streak += 1
-			update_score()
+			bubble_streak = min(bubble_streak + 1, MAX_BUBBLE_STREAK)
+			update_score(bubble_streak)
 		elif area.is_in_group("bonus"):
-			bubble_streak *= 2
-			update_score()
+			if bubble_streak == MAX_BUBBLE_STREAK:
+				update_score(bubble_streak * 2)
+			elif bubble_streak == 0:
+				bubble_streak = 1
+				update_score(bubble_streak)
+			else:
+				bubble_streak = min(bubble_streak * 2, MAX_BUBBLE_STREAK)
+				update_score(bubble_streak)
+			
 		area.pop()
 	elif area.is_in_group("trap"):
 		get_hit(area.position, -1)
+		hit_1.play()
 		bubble_streak = 0
 		area.pop()
 		
 #update the visible score display
-func update_score():
+func update_score(points: float):
 	get_parent().add_points(bubble_streak)
 
 func _on_dash_timer_timeout():
-	if player_state == states.DEAD:
+	if player_state == states.DEAD or player_state == states.FULL_DEAD:
 		return #dont undo death
 	if is_on_floor():
 		player_state = states.GROUNDED
@@ -267,7 +314,7 @@ func _on_dash_cooldown_timer_timeout():
 
 
 func _on_hitstun_timer_timeout():
-	if player_state == states.DEAD:
+	if player_state == states.DEAD or player_state == states.FULL_DEAD:
 		return #dont undo death
 	if is_on_floor():
 		player_state = states.GROUNDED

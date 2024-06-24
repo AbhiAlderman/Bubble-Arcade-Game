@@ -1,32 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://dl5cp1av8gapu"]
+[gd_scene load_steps=12 format=3 uid="uid://dl5cp1av8gapu"]
 
-[ext_resource type="Script" path="res://Scripts/balloon.gd" id="1_0hxe3"]
-[ext_resource type="Texture2D" uid="uid://bsdh3bnqlpv8p" path="res://Assets/obstacles/Mine.png" id="2_1jvr7"]
+[ext_resource type="Script" path="res://Scripts/mine.gd" id="1_p5v45"]
+[ext_resource type="Texture2D" uid="uid://bnniirtio3nx2" path="res://Assets/obstacles/mine_palette-Sheet.png" id="2_3tqmn"]
 [ext_resource type="Texture2D" uid="uid://dxg5aq5m74v36" path="res://Assets/obstacles/mine_explosion.png" id="3_mgn61"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_w58yh"]
-atlas = ExtResource("2_1jvr7")
+[sub_resource type="AtlasTexture" id="AtlasTexture_enpfx"]
+atlas = ExtResource("2_3tqmn")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oprl0"]
-atlas = ExtResource("2_1jvr7")
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxeuf"]
+atlas = ExtResource("2_3tqmn")
 region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kujj6"]
-atlas = ExtResource("2_1jvr7")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q3pg1"]
-atlas = ExtResource("3_mgn61")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a41ph"]
-atlas = ExtResource("3_mgn61")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_53s3r"]
-atlas = ExtResource("3_mgn61")
-region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kh3d7"]
 atlas = ExtResource("3_mgn61")
@@ -48,31 +32,16 @@ region = Rect2(192, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_w58yh")
+"texture": SubResource("AtlasTexture_enpfx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_oprl0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w58yh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kujj6")
+"texture": SubResource("AtlasTexture_hxeuf")
 }],
 "loop": true,
 "name": &"default",
-"speed": 3.0
+"speed": 5.0
 }, {
 "frames": [{
-"duration": 0.6,
-"texture": SubResource("AtlasTexture_q3pg1")
-}, {
-"duration": 0.3,
-"texture": SubResource("AtlasTexture_a41ph")
-}, {
-"duration": 0.2,
-"texture": SubResource("AtlasTexture_53s3r")
-}, {
 "duration": 2.5,
 "texture": SubResource("AtlasTexture_kh3d7")
 }, {
@@ -119,15 +88,23 @@ z_index = 10
 scale = Vector2(1.6, 1.6)
 collision_layer = 4
 collision_mask = 33
-script = ExtResource("1_0hxe3")
+script = ExtResource("1_p5v45")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -3.125)
+scale = Vector2(0.889392, 0.87854)
 sprite_frames = SubResource("SpriteFrames_1blcq")
-frame_progress = 0.832888
+animation = &"popping"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3.75)
+scale = Vector2(1.26256, 1.18346)
 shape = SubResource("CircleShape2D_vlu8o")
+
+[node name="lifetime" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="lifetime" to="." method="_on_lifetime_timeout"]

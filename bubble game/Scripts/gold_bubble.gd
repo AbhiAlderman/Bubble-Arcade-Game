@@ -2,7 +2,7 @@ extends Node2D
 
 const POP_TIME = 0.2
 @onready var sprite = $AnimatedSprite2D
-var rise_speed: float = -150
+var rise_speed: float = -190
 var bubble_state: states
 var pop_timer: float
 enum states{

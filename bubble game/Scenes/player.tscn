@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://6gvd61vivt27"]
+[gd_scene load_steps=85 format=3 uid="uid://6gvd61vivt27"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_qs0df"]
 [ext_resource type="Texture2D" path="res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V3/Player Death/Player Death 64x64.png" id="2_3clv6"]
@@ -10,6 +10,14 @@
 [ext_resource type="Texture2D" uid="uid://2o633c2owfk0" path="res://Assets/Custom Character/player run 48x48-Sheet.png" id="6_fph3f"]
 [ext_resource type="Texture2D" uid="uid://dpwel3ngllv7g" path="res://Assets/Custom Character/hurt-Sheet-Sheet.png" id="6_h2qsq"]
 [ext_resource type="Texture2D" uid="uid://bjyqfg66513ri" path="res://Assets/Custom Character/bar_sheet.png" id="8_5tmhc"]
+[ext_resource type="FontFile" uid="uid://diqnt3wxqeb3s" path="res://Assets/UI/CyberpunkCraftpixPixel.otf" id="11_tkqs6"]
+[ext_resource type="AudioStream" uid="uid://bpuaa086bww0s" path="res://Assets/sound/sfx/Jump2 (2).wav" id="12_2056n"]
+[ext_resource type="AudioStream" uid="uid://clr2grpgmjhuc" path="res://Assets/sound/sfx/Jump (2).wav" id="13_cohs5"]
+[ext_resource type="AudioStream" uid="uid://dxc4l6b2d4f4a" path="res://Assets/sound/sfx/4.wav" id="14_1pepd"]
+[ext_resource type="AudioStream" uid="uid://jualuipyp3vt" path="res://Assets/sound/sfx/dash.wav" id="15_0y2kj"]
+[ext_resource type="AudioStream" uid="uid://rj7njjmd6ghm" path="res://Assets/sound/sfx/Hit_Hurt2.wav" id="16_1f5t3"]
+[ext_resource type="AudioStream" uid="uid://cf20o4dx7bcfo" path="res://Assets/sound/sfx/Hit_Hurt6.wav" id="17_1g0o2"]
+[ext_resource type="AudioStream" uid="uid://cbvbnncb2oslp" path="res://Assets/sound/sfx/Confirm 1.wav" id="18_ii2t2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oivha"]
 radius = 9.0
@@ -18,6 +26,10 @@ height = 32.0
 [sub_resource type="AtlasTexture" id="AtlasTexture_gunu0"]
 atlas = ExtResource("2_ty88i")
 region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1i5c"]
+atlas = ExtResource("2_3clv6")
+region = Rect2(432, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ug6bb"]
 atlas = ExtResource("2_3clv6")
@@ -54,10 +66,6 @@ region = Rect2(336, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_301ck"]
 atlas = ExtResource("2_3clv6")
 region = Rect2(384, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x1i5c"]
-atlas = ExtResource("2_3clv6")
-region = Rect2(432, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bgr81"]
 atlas = ExtResource("3_7spjg")
@@ -191,6 +199,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x1i5c")
+}],
+"loop": true,
+"name": &"dead",
 "speed": 5.0
 }, {
 "frames": [{
@@ -528,6 +544,15 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_1k8u5"]
+font = ExtResource("11_tkqs6")
+font_size = 20
+font_color = Color(0.705882, 0.321569, 0.321569, 1)
+outline_size = 5
+outline_color = Color(0.129412, 0.129412, 0.137255, 1)
+shadow_size = 4
+shadow_color = Color(1, 0, 0, 1)
+
 [node name="player" type="CharacterBody2D"]
 scale = Vector2(1.6, 1.6)
 collision_layer = 2
@@ -541,8 +566,7 @@ shape = SubResource("CapsuleShape2D_oivha")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7dseh")
-animation = &"idle"
-frame_progress = 0.232542
+animation = &"jump_peak"
 
 [node name="Timers" type="Node" parent="."]
 
@@ -573,11 +597,51 @@ position = Vector2(-0.625, 11.875)
 shape = SubResource("RectangleShape2D_gam3v")
 
 [node name="dash_bar" type="AnimatedSprite2D" parent="."]
+z_index = 4
 position = Vector2(0, -21.25)
 scale = Vector2(0.799998, 0.775002)
 sprite_frames = SubResource("SpriteFrames_1bnkg")
 animation = &"loading"
 speed_scale = 0.25
+
+[node name="combo_display" type="Label" parent="."]
+offset_left = -4.375
+offset_top = -42.5
+offset_right = 54.625
+offset_bottom = -19.5
+label_settings = SubResource("LabelSettings_1k8u5")
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="Jump_1" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("12_2056n")
+volume_db = -16.0
+
+[node name="Jump_2" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("13_cohs5")
+volume_db = -25.407
+pitch_scale = 1.5
+
+[node name="Jump_3" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("14_1pepd")
+volume_db = -6.0
+
+[node name="Dash" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("15_0y2kj")
+volume_db = -6.0
+pitch_scale = 1.5
+
+[node name="Hit_1" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("16_1f5t3")
+volume_db = -12.0
+
+[node name="Hit_2" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("17_1g0o2")
+volume_db = -12.0
+
+[node name="Heal" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("18_ii2t2")
+volume_db = -6.0
 
 [connection signal="timeout" from="Timers/Flipping_Timer" to="." method="_on_flipping_timer_timeout"]
 [connection signal="timeout" from="Timers/Death_Timer" to="." method="_on_death_timer_timeout"]

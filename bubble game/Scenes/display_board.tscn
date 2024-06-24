@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqn04htu37n0r"]
+
+[ext_resource type="FontFile" uid="uid://diqnt3wxqeb3s" path="res://Assets/UI/CyberpunkCraftpixPixel.otf" id="1_2p1pk"]
+[ext_resource type="Script" path="res://Scripts/display_board.gd" id="1_htpyu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sbxnl"]
+font = ExtResource("1_2p1pk")
+font_size = 20
+font_color = Color(0.709804, 0.211765, 0.211765, 1)
+outline_size = 6
+outline_color = Color(0.129412, 0.129412, 0.137255, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_k5miw"]
+font = ExtResource("1_2p1pk")
+font_size = 18
+outline_size = 6
+outline_color = Color(0.129412, 0.129412, 0.137255, 1)
+
+[node name="Display_Board" type="Control"]
+z_index = 20
+layout_mode = 3
+anchors_preset = 0
+offset_left = -4.0
+offset_top = 24.0
+offset_right = 36.0
+offset_bottom = 64.0
+script = ExtResource("1_htpyu")
+
+[node name="LeaderBoard_Title" type="Label" parent="."]
+z_index = 12
+offset_left = -195.0
+offset_top = -139.0
+offset_right = 214.0
+offset_bottom = -50.0
+text = "LEADERBOARD
+"
+label_settings = SubResource("LabelSettings_sbxnl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Leaderboard_Names" type="Label" parent="."]
+z_index = 5
+layout_mode = 0
+offset_left = -89.0
+offset_top = -72.0
+offset_right = -49.0
+offset_bottom = -49.0
+label_settings = SubResource("LabelSettings_k5miw")
+vertical_alignment = 1

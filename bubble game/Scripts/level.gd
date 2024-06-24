@@ -58,27 +58,37 @@ const W6_MIN_CHUNK_SIZE: int = 6
 const W6_MAX_CHUNK_SIZE: int = 7
 #Wave 7 constants
 const W7_DOWNTIME: float = 10
-const W7_MIN_BUBBLES: int = 13
-const W7_MAX_BUBBLES: int = 22
-const W7_MIN_TRAPS: int = 16
-const W7_MAX_TRAPS: int = 20
+const W7_MIN_BUBBLES: int = 15
+const W7_MAX_BUBBLES: int = 25
+const W7_MIN_TRAPS: int = 20
+const W7_MAX_TRAPS: int = 30
 const W7_MIN_CHUNK_SIZE: int = 7
 const W7_MAX_CHUNK_SIZE: int = 8
 #Wave max constants
 const WMAX_DOWNTIME: float = 10
-const WMAX_MIN_BUBBLES: int = 15
-const WMAX_MAX_BUBBLES: int = 25
-const WMAX_MIN_TRAPS: int = 20
-const WMAX_MAX_TRAPS: int = 28
+const WMAX_MIN_BUBBLES: int = 20
+const WMAX_MAX_BUBBLES: int = 35
+const WMAX_MIN_TRAPS: int = 30
+const WMAX_MAX_TRAPS: int = 40
 const WMAX_MIN_CHUNK_SIZE: int = 8
 const WMAX_MAX_CHUNK_SIZE: int = 10
 
+const HEALTH_RATE:float = 0.02
+const GOLD_RATE: float = 0.01
+const GREEN_RATE: float = 0.3
+const MISSILE_RATE: float = 0.15
+const RED_RATE: float = 0.2
 const LAYER_SIZE: int = 200
 
 #load necessary nodes
 #spawning markers
 @onready var top_right = $Spawning/Top_Right
 @onready var top_left = $Spawning/Top_Left
+@onready var bounce_left_bottom = $Spawning/Bounce_Left_Bottom
+@onready var bounce_left_top = $Spawning/Bounce_Left_Top
+@onready var bounce_right_top = $Spawning/Bounce_Right_Top
+@onready var bounce_right_bottom = $Spawning/Bounce_Right_Bottom
+
 #other
 @onready var head_1 = $Life_Heads/head_1
 @onready var head_2 = $Life_Heads/head_2
@@ -87,12 +97,18 @@ const LAYER_SIZE: int = 200
 @onready var wave_downtime = $Spawning/Wave_Downtime
 @onready var flash_heal_timer = $Life_Heads/Flash_Heal_Timer
 @onready var score_display = $UI/Score_Display
+@onready var leaderboard = $leaderboard
+@onready var board_display = $UI/Board_Display
+@onready var play_again = $UI/play_again
+@onready var player = $player
 
 const BLUE_BUBBLE = preload("res://Scenes/balloon.tscn")
 const RED_BUBBLE = preload("res://Scenes/red_bubble.tscn")
 const MINE_BUBBLE = preload("res://Scenes/mine.tscn")
 const GOLD_BUBBLE = preload("res://Scenes/gold_bubble.tscn")
 const HEALTH_BUBBLE = preload("res://Scenes/health_bubble.tscn")
+const MISSILE = preload("res://Scenes/missile.tscn")
+
 const INIT_DOWNTIME: float = 3
 
 #variables
@@ -124,6 +140,10 @@ var bubble_threshold: int
 var trap_threshold: int
 var gold_spawn_chance: float
 var health_spawn_chance: float
+var green_spawn_chance: float
+var missile_spawn_chance: float
+var red_spawn_chance: float
+
 func _ready():
 	player_health = 3
 	flash_damage = false
@@ -133,8 +153,15 @@ func _ready():
 	wave_downtime.start()
 	score = 0
 	score_display.text = "SCORE: " + str(score)
+	board_display.visible = false
+	play_again.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta):
+	if play_again.visible == true:
+		if Input.is_action_pressed("jump"):
+			get_tree().reload_current_scene()
+
 func _process(_delta):
 	score_display.text = "SCORE: " + str(score)
 	match player_health:
@@ -182,6 +209,26 @@ func change_health(health: int):
 		flash_heal_timer.start()
 	player_health = health
 
+func game_over():
+	#add score to leaderboard
+	#load leaderboard on screen
+	#add retry button (pressing space)
+	print("CALLED GET LEADERBOARDS")
+	leaderboard._upload_score(score)
+	
+
+func grab_leaderboard():
+	leaderboard._get_leaderboards()
+	print("BACK FROM LEADERBOARDS")
+	
+
+
+func display_leaderboard(leaderboard: String):
+	board_display.visible = true
+	board_display.display_scores(leaderboard)
+	play_again.visible = true
+	
+	
 func spawn_wave():
 	match wave_number:
 		0:
@@ -194,6 +241,9 @@ func spawn_wave():
 			current_chunk_max = W0_MAX_CHUNK_SIZE
 			gold_spawn_chance = 0
 			health_spawn_chance = 0
+			missile_spawn_chance = 0
+			red_spawn_chance = 0
+			green_spawn_chance = 0
 		1:
 			current_min_bubbles = W1_MIN_BUBBLES
 			current_max_bubbles = W1_MAX_BUBBLES
@@ -204,6 +254,10 @@ func spawn_wave():
 			current_chunk_max = W1_MAX_CHUNK_SIZE
 			gold_spawn_chance = 0
 			health_spawn_chance = 0
+			missile_spawn_chance = 0
+			red_spawn_chance = 0
+			green_spawn_chance = 0
+			
 		2:
 			current_min_bubbles = W2_MIN_BUBBLES
 			current_max_bubbles = W2_MAX_BUBBLES
@@ -212,8 +266,11 @@ func spawn_wave():
 			current_wave_downtime = W2_DOWNTIME
 			current_chunk_min = W2_MIN_CHUNK_SIZE
 			current_chunk_max = W2_MAX_CHUNK_SIZE
-			gold_spawn_chance = 0.05
-			health_spawn_chance = 0.10
+			gold_spawn_chance = GOLD_RATE
+			health_spawn_chance = HEALTH_RATE
+			missile_spawn_chance = MISSILE_RATE
+			red_spawn_chance = RED_RATE
+			green_spawn_chance = GREEN_RATE
 		3:
 			current_min_bubbles = W3_MIN_BUBBLES
 			current_max_bubbles = W3_MAX_BUBBLES
@@ -246,6 +303,11 @@ func spawn_wave():
 			current_wave_downtime = W6_DOWNTIME
 			current_chunk_min = W6_MIN_CHUNK_SIZE
 			current_chunk_max = W6_MAX_CHUNK_SIZE
+			gold_spawn_chance *= 2
+			health_spawn_chance *= 2
+			missile_spawn_chance *= 2
+			red_spawn_chance *= 2
+			green_spawn_chance *= 2
 		7:
 			current_min_bubbles = W7_MIN_BUBBLES
 			current_max_bubbles = W7_MAX_BUBBLES
@@ -302,15 +364,52 @@ func run_wave():
 func create_props(amount: int, trap: bool, top_range: float, bottom_range: float):
 	for i in range(amount):
 		if trap:
-			next_bubble = MINE_BUBBLE.instantiate()
-		else:
-			var bubble_change = rng.randf_range(0.001, 10)
-			if bubble_change < gold_spawn_chance:
-				next_bubble = GOLD_BUBBLE.instantiate()
-			elif bubble_change > gold_spawn_chance and bubble_change < health_spawn_chance + gold_spawn_chance:
-				next_bubble = HEALTH_BUBBLE.instantiate()
+			var missile_chance = rng.randf_range(0.0001, 1)
+			if missile_chance < missile_spawn_chance:
+				#spawn missile
+				next_bubble = MISSILE.instantiate()
+			elif missile_chance <= missile_spawn_chance + red_spawn_chance:
+				#spawn red bubble
+				next_bubble = RED_BUBBLE.instantiate()
+				var left_chance = rng.randf_range(0, 1)
+				if left_chance < 0.5:
+					next_bubble.position = Vector2(rng.randf_range(bounce_left_bottom.position.x, bounce_left_top.position.y),
+						rng.randf_range(bounce_left_top.position.y, bounce_left_bottom.position.y))
+					next_bubble.set_move_speed(rng.randf_range(90, 110))
+				else:
+					next_bubble.position = Vector2(rng.randf_range(bounce_right_bottom.position.x, bounce_right_top.position.x), 
+						rng.randf_range(bounce_right_top.position.y, bounce_right_bottom.position.y))
+					next_bubble.set_move_speed(rng.randf_range(-110, -90))
+				add_child(next_bubble)
+				return
 			else:
+				next_bubble = MINE_BUBBLE.instantiate()
+		else:
+			var bubble_chance = rng.randf_range(0.001, 1)
+			if bubble_chance < gold_spawn_chance:
+				#spawn gold bubble
+				next_bubble = GOLD_BUBBLE.instantiate()
+			elif bubble_chance < health_spawn_chance + gold_spawn_chance:
+				#spawn health bubble
+				next_bubble = HEALTH_BUBBLE.instantiate()
+			elif bubble_chance < health_spawn_chance + gold_spawn_chance + green_spawn_chance:
+				#50% GREEN, 50% DARK
+				bubble_chance = rng.randf_range(0, 1)
+				if bubble_chance < 0.5:
+					#spawn green bubble
+					next_bubble = BLUE_BUBBLE.instantiate()
+					next_bubble.set_green(true)
+					next_bubble.set_rise_speed(rng.randf_range(-110, -130))
+				else:
+					#spawn dark bubble
+					next_bubble = BLUE_BUBBLE.instantiate()
+					next_bubble.set_dark(true)
+					next_bubble.set_rise_speed(rng.randf_range(-50, -70))
+			else:
+				#spawn blue bubble
 				next_bubble = BLUE_BUBBLE.instantiate()
+				next_bubble.set_green(false)
+				next_bubble.set_rise_speed(rng.randf_range(-80, -90))
 		next_bubble.position = Vector2(
 			rng.randf_range(top_left.position.x, top_right.position.x), rng.randf_range(top_range, bottom_range))
 		add_child(next_bubble)

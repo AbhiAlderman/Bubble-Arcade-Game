@@ -7,7 +7,6 @@ var development_mode = false
 var leaderboard_key = "leaderboardkey"
 var session_token = ""
 var score = 0
-
 # HTTP Request node can only handle one call per node
 var auth_http = HTTPRequest.new()
 var leaderboard_http = HTTPRequest.new()
@@ -16,26 +15,30 @@ var submit_score_http = HTTPRequest.new()
 var set_name_http = HTTPRequest.new()
 var get_name_http = HTTPRequest.new()
 
+
+var display_board: PackedScene = preload("res://Scenes/leaderboard.tscn")
+
 func _ready():
 	_authentication_request()
 
 func _process(_delta):
-	if(Input.is_action_just_pressed("ui_up")):
-		score += 1
-		print("CurrentScore:"+str(score))
-	
-	if(Input.is_action_just_pressed("ui_down")):
-		score -= 1
-		print("CurrentScore:"+str(score))
-	
-	# Upload score when pressing enter
-	if(Input.is_action_just_pressed("ui_accept")):
-		_upload_score(score)
-	
-	# Get score when pressing spacebar
-	if(Input.is_action_just_pressed("ui_select")):
-		_get_leaderboards()
-
+	#if(Input.is_action_just_pressed("ui_up")):
+		#score += 1
+		#print("CurrentScore:"+str(score))
+	#
+	#if(Input.is_action_just_pressed("ui_down")):
+		#score -= 1
+		#print("CurrentScore:"+str(score))
+	#
+	## Upload score when pressing enter
+	#if(Input.is_action_just_pressed("ui_accept")):
+		#_upload_score(score)
+	#
+	## Get score when pressing spacebar
+	#if(Input.is_action_just_pressed("ui_select")):
+		#_get_leaderboards()
+#
+	pass
 
 func _authentication_request():
 	# Check if a player session exists
@@ -91,11 +94,10 @@ func _on_authentication_request_completed(result, response_code, headers, body):
 	# Clear node
 	auth_http.queue_free()
 	# Get leaderboards
-	_get_leaderboards()
+	#_get_leaderboards()
 
 
 func _get_leaderboards():
-	print("Getting leaderboards")
 	var url = "https://api.lootlocker.io/game/leaderboards/"+leaderboard_key+"/list?count=10"
 	var headers = ["Content-Type: application/json", "x-session-token:"+session_token]
 	
@@ -116,13 +118,13 @@ func _on_leaderboard_request_completed(result, response_code, headers, body):
 	
 	# Formatting as a leaderboard
 	var leaderboardFormatted = ""
-	for n in json.get_data().size() - 1:
+	for n in min(json.get_data().size() - 1, 5):
 		leaderboardFormatted += str(json.get_data().items[n].rank)+str(". ")
-		leaderboardFormatted += str(json.get_data().items[n].player.id)+str(" - ")
+		leaderboardFormatted += str(json.get_data().items[n].player.name)+str(" - ")
 		leaderboardFormatted += str(json.get_data().items[n].score)+str("\n")
 	# Print the formatted leaderboard to the console
 	print(leaderboardFormatted)
-	
+	get_parent().display_leaderboard(leaderboardFormatted)
 	# Clear node
 	leaderboard_http.queue_free()
 
@@ -139,8 +141,6 @@ func _upload_score(score: int):
 	print(data)
 
 func _change_player_name(player_name: String):
-	print("Changing player name")
-	
 	var data = { "name": str(player_name) }
 	var url =  "https://api.lootlocker.io/game/player/name"
 	var headers = ["Content-Type: application/json", "x-session-token:"+session_token]
@@ -157,6 +157,7 @@ func _on_player_set_name_request_completed(result, response_code, headers, body)
 	json.parse(body.get_string_from_utf8())
 	
 	# Print data
+	var data = json.get_data()
 	print(json.get_data())
 	set_name_http.queue_free()
 
@@ -186,7 +187,8 @@ func _on_upload_score_request_completed(result, response_code, headers, body) :
 	json.parse(body.get_string_from_utf8())
 	
 	# Print data
+	print("UPLOAD SCORE REQUEST COMPLETE DATA")
 	print(json.get_data())
-	
+	get_parent().grab_leaderboard()
 	# Clear node
 	submit_score_http.queue_free()

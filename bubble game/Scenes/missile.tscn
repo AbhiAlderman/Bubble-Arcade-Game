@@ -1,0 +1,109 @@
+[gd_scene load_steps=15 format=3 uid="uid://dqmpbqrf8ojrb"]
+
+[ext_resource type="Texture2D" uid="uid://c33k7ug62now6" path="res://Assets/obstacles/Misssile.png" id="1_268i8"]
+[ext_resource type="Script" path="res://Scripts/missile.gd" id="1_mmlmf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ej3tx"]
+atlas = ExtResource("1_268i8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yje06"]
+atlas = ExtResource("1_268i8")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ie8nw"]
+atlas = ExtResource("1_268i8")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdpcy"]
+atlas = ExtResource("1_268i8")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6kkp"]
+atlas = ExtResource("1_268i8")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cm62"]
+atlas = ExtResource("1_268i8")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6y4vr"]
+atlas = ExtResource("1_268i8")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pyi32"]
+atlas = ExtResource("1_268i8")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pejka"]
+atlas = ExtResource("1_268i8")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nlu5"]
+atlas = ExtResource("1_268i8")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ba7t7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ej3tx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yje06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ie8nw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdpcy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6kkp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cm62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6y4vr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pyi32")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pejka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nlu5")
+}],
+"loop": true,
+"name": &"popping",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jy3pw"]
+radius = 6.0
+height = 24.0
+
+[node name="missile" type="Area2D" groups=["trap"]]
+collision_layer = 4
+collision_mask = 33
+script = ExtResource("1_mmlmf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ba7t7")
+animation = &"popping"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_jy3pw")
+
+[node name="lifetime" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true
+
+[connection signal="timeout" from="lifetime" to="." method="_on_lifetime_timeout"]

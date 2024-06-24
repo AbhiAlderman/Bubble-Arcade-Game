@@ -12,3 +12,13 @@ res://Scenes/leaderboard.tscn
 res://Scripts/leaderboard.gd
 res://Scripts/main_menu.gd
 res://Scripts/level.gd
+res://Scripts/player.gd
+res://Scenes/display_board.tscn
+res://Scripts/display_board.gd
+res://Scenes/missile.tscn
+res://Scripts/missile.gd
+res://Scripts/balloon.gd
+res://Scripts/red_bubble.gd
+res://Scripts/gold_bubble.gd
+res://default_bus_layout.tres
+res://Scripts/mine.gd
