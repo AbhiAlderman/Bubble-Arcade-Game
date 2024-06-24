@@ -2,7 +2,6 @@ extends Node2D
 
 const POP_TIME = 0.2
 @onready var sprite = $AnimatedSprite2D
-@onready var lifetime = $lifetime
 
 var rise_speed: float = -85
 var bubble_state: states
@@ -14,7 +13,7 @@ enum states{
 }
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	lifetime.start()
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -41,6 +40,6 @@ func pop():
 func set_rise_speed(speed: float):
 	rise_speed = speed
 
-
-func _on_lifetime_timeout():
-	pop()
+func _on_area_entered(area):
+	if area.is_in_group("trapbox"):
+		pop()

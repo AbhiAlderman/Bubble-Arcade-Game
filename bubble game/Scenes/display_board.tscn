@@ -30,6 +30,7 @@ script = ExtResource("1_htpyu")
 
 [node name="LeaderBoard_Title" type="Label" parent="."]
 z_index = 12
+layout_mode = 0
 offset_left = -195.0
 offset_top = -139.0
 offset_right = 214.0

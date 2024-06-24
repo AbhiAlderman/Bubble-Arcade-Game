@@ -1,6 +1,7 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1719187333
-export_presets.cfg::TextFile::-1::1719130260::0::1::::<><>::
+::res://::1719233698
+default_bus_layout.tres::AudioBusLayout::4898839489043602073::1719216904::0::1::::<><>::
+export_presets.cfg::TextFile::-1::1719231565::0::1::::<><>::
 modulate_green.gd::GDScript::-1::1719084861::0::1::::<>AnimatedSprite2D<>::
 ::res://Assets/::1719215542
 ::res://Assets/Custom Character/::1719128580
@@ -16,21 +17,24 @@ Player Idle 48x48-Sheet.png::CompressedTexture2D::7954718778873451159::171908877
 player jump 48x48-Sheet.png::CompressedTexture2D::4259015105517248895::1719093293::1719093294::1::::<><>::
 Player Roll 48x48-Sheet.png::CompressedTexture2D::8839233673854207678::1719094679::1719094680::1::::<><>::
 player run 48x48-Sheet.png::CompressedTexture2D::1925933770778557553::1719093528::1719093529::1::::<><>::
-::res://Assets/level/::1719117658
+::res://Assets/level/::1719227221
 animated_head_sheet.png::CompressedTexture2D::3142384872396403268::1719104870::1719104872::1::::<><>::
 basic_tileset.png::CompressedTexture2D::5442239239922938511::1719117065::1719117067::1::::<><>::
 cavesofgallet.png::CompressedTexture2D::2417674581406199993::1719053403::1719053433::1::::<><>::
 cavesofgallet_tiles.png::CompressedTexture2D::3334203733988950245::1719053403::1719053433::1::::<><>::
 head.png::CompressedTexture2D::4277941961818764396::1719104093::1719104097::1::::<><>::
+skyboxes.png::CompressedTexture2D::2231552838523409481::1719224769::1719224772::1::::<><>::
 textured_block.png::CompressedTexture2D::4291147670356829041::1719117650::1719117658::1::::<><>::
-::res://Assets/obstacles/::1719214092
+tileset_water.png::CompressedTexture2D::6227990078915420848::1675373083::1719225075::1::::<><>::
+waves.png::CompressedTexture2D::1434161101877199726::1719227220::1719227221::1::::<><>::
+::res://Assets/obstacles/::1719227943
 Blue_BubbleV2.png::CompressedTexture2D::4616961470839139364::1719123674::1719123676::1::::<><>::
-Blue_BubbleV3.png::CompressedTexture2D::7066018571382388335::1719129399::1719129434::1::::<><>::
+Blue_BubbleV3.png::CompressedTexture2D::7066018571382388335::1719227789::1719227790::1::::<><>::
 bubble-Sheet.png::CompressedTexture2D::2648130960304224755::1719053403::1719053433::1::::<><>::
 bubble.png::CompressedTexture2D::979079765722698482::1719053403::1719053433::1::::<><>::
 bubble_red-Sheet.png::CompressedTexture2D::4637771266325487730::1719083856::1719084101::1::::<><>::
 bubble_red.png::CompressedTexture2D::8280201093954284789::1719083708::1719084101::1::::<><>::
-dark_bubble-export.png::CompressedTexture2D::7677682667480568003::1719214090::1719214092::1::::<><>::
+dark_bubble-export.png::CompressedTexture2D::7677682667480568003::1719227940::1719227943::1::::<><>::
 gold_bubble.png::CompressedTexture2D::1446002393066829437::1719123519::1719123534::1::::<><>::
 Green_Bubble.png::CompressedTexture2D::4005202306087500158::1719123582::1719123586::1::::<><>::
 Green_BubbleV3.png::CompressedTexture2D::9024101796463736567::1719129417::1719129434::1::::<><>::
@@ -38,8 +42,10 @@ Healing_Bubble.png::CompressedTexture2D::1734792000207386608::1719117851::171911
 Mine.png::CompressedTexture2D::3656488096966654637::1719180509::1719180515::1::::<><>::
 mine_explosion.png::CompressedTexture2D::8787814118368288275::1719180571::1719180673::1::::<><>::
 mine_palette-Sheet.png::CompressedTexture2D::3326213506715214813::1719209285::1719209287::1::::<><>::
+missle_hd.png::CompressedTexture2D::2112825116720280778::1719219576::1719219579::1::::<><>::
 Misssile.png::CompressedTexture2D::6796596942878340411::1719207537::1719207549::1::::<><>::
 Red_BubbleV4.png::CompressedTexture2D::4383156192685386887::1719129408::1719129434::1::::<><>::
+x.png::CompressedTexture2D::2245771276132514152::1719218975::1719218978::1::::<><>::
 ::res://Assets/Prototype Character/::1719053403
 ::res://Assets/Prototype Character/Asset Packs 1-4 (final)/::1719093421
 ::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V1/::1719053403
@@ -56,9 +62,13 @@ player run 48x48.png::CompressedTexture2D::2552499824574864593::1719053403::1719
 player air spin 48x48.png::CompressedTexture2D::5992513423964710657::1719053403::1719053433::1::::<><>::
 ::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V3/::1719053403
 ::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V3/Player Death/::1719093196
-Player Death 64x64.png::CompressedTexture2D::-1::1719093177::1719093196::1::::<><>::
-::res://Assets/sound/::1719215546
-::res://Assets/sound/sfx/::1719216038
+Player Death 64x64.png::CompressedTexture2D::7008872474527642981::1719093177::1719093196::1::::<><>::
+::res://Assets/sound/::1719221601
+::res://Assets/sound/music/::1719222447
+game.ogg::AudioStreamOggVorbis::9048785908655245581::1717199769::1719222312::1::::<><>::
+game_2.ogg::AudioStreamOggVorbis::532483179281450940::1717199769::1719222447::1::::<><>::
+menu.ogg::AudioStreamOggVorbis::1116272508507966004::1717199766::1719221622::1::::<><>::
+::res://Assets/sound/sfx/::1719216040
 4.wav::AudioStreamWAV::8779516277785919782::1719215548::1719215648::1::::<><>::
 Confirm 1.wav::AudioStreamWAV::4886466762148268557::1719215593::1719215648::1::::<><>::
 dash.wav::AudioStreamWAV::673007855096105125::1719216031::1719216040::1::::<><>::
@@ -68,35 +78,40 @@ Hit_Hurt2.wav::AudioStreamWAV::1213756387886229754::1719215568::1719215648::1:::
 Hit_Hurt6.wav::AudioStreamWAV::5181068239769194856::1719215565::1719215648::1::::<><>::
 Jump2 (2).wav::AudioStreamWAV::3480542258817807132::1719215558::1719215648::1::::<><>::
 Jump (2).wav::AudioStreamWAV::5581664059149728206::1719215561::1719215648::1::::<><>::
-::res://Assets/UI/::1719201353
+::res://Assets/UI/::1719230605
 check.png::CompressedTexture2D::7353738335741980898::1719201351::1719201353::1::::<><>::
+controls.png::CompressedTexture2D::1932923482298774237::1719230604::1719230605::1::::<><>::
 CyberpunkCraftpixPixel.otf::FontFile::7754627600944732366::1718577040::1719169611::1::::<><>::
+Fire+Sparks-Sheet.png::CompressedTexture2D::4784706699994159158::1681767068::1719220369::1::::<><>::
 GUI.png::CompressedTexture2D::8169004709703919566::1719171386::1719171467::1::::<><>::
-::res://Scenes/::1719215716
-balloon.tscn::PackedScene::152623973485237384::1719214777::0::1::::<><>::res://Scripts/balloon.gd<>uid://c7w3j8khh6i1t::::res://Assets/obstacles/Blue_BubbleV3.png<>uid://d1tlvxx32e600::::res://Assets/obstacles/Green_BubbleV3.png<>uid://dhnekupm3lb8f::::res://Assets/obstacles/dark_bubble-export.png
-ghost.tscn::PackedScene::2244973452571018374::1719214777::0::1::::<><>::uid://cnksaux8016lj::::res://Assets/Custom Character/dash_effect.png<>res://Scripts/Ghost.gd
-gold_bubble.tscn::PackedScene::4677179399732743896::1719214777::0::1::::<><>::res://Scripts/gold_bubble.gd<>uid://uuppicdjenjh::::res://Assets/obstacles/gold_bubble.png
+Smoke-Sheet.png::CompressedTexture2D::5280085240198888586::1681766960::1719220523::1::::<><>::
+x-export.png::CompressedTexture2D::5915997061002323414::1719219123::1719219125::1::::<><>::
+::res://Scenes/::1719232526
+balloon.tscn::PackedScene::152623973485237384::1719232526::0::1::::<><>::res://Scripts/balloon.gd<>uid://c7w3j8khh6i1t::::res://Assets/obstacles/Blue_BubbleV3.png<>uid://d1tlvxx32e600::::res://Assets/obstacles/Green_BubbleV3.png<>uid://dhnekupm3lb8f::::res://Assets/obstacles/dark_bubble-export.png
+display_board.tscn::PackedScene::8310690570895136407::1719232526::0::1::::<><>::uid://diqnt3wxqeb3s::::res://Assets/UI/CyberpunkCraftpixPixel.otf<>res://Scripts/display_board.gd
+ghost.tscn::PackedScene::2244973452571018374::1719232526::0::1::::<><>::uid://cnksaux8016lj::::res://Assets/Custom Character/dash_effect.png<>res://Scripts/Ghost.gd
+gold_bubble.tscn::PackedScene::4677179399732743896::1719232526::0::1::::<><>::res://Scripts/gold_bubble.gd<>uid://uuppicdjenjh::::res://Assets/obstacles/gold_bubble.png
 health_bubble.tscn::PackedScene::5174104170469799860::1719188086::0::1::::<><>::res://Scripts/health_bubble.gd<>uid://yyl1hbauf7u7::::res://Assets/obstacles/Healing_Bubble.png<>uid://dhus88y4whqw4::::res://Scenes/health_potion.tscn
 health_potion.tscn::PackedScene::7693025120388565121::1719188086::0::1::::<><>::res://Scripts/health_potion.gd<>uid://yyl1hbauf7u7::::res://Assets/obstacles/Healing_Bubble.png
-leaderboard.tscn::PackedScene::2977961484657135912::1719214778::0::1::::<><>::res://Scripts/leaderboard.gd
-level.tscn::PackedScene::6757970863757621107::1719215651::0::1::::<><>::uid://bape0nxfqw7mr::::res://Assets/level/cavesofgallet.png<>res://Scripts/level.gd<>uid://6gvd61vivt27::::res://Scenes/player.tscn<>uid://cjsi5dil0klxv::::res://Assets/level/basic_tileset.png<>uid://8k0hfy8n6kdq::::res://Assets/Custom Character/damaged_head.png<>uid://b2ewts6edoqj6::::res://Assets/level/textured_block.png<>uid://bk1gvcojepf37::::res://Assets/level/animated_head_sheet.png<>uid://b5dyb7msrnwqd::::res://Assets/Custom Character/heart_head.png<>uid://6ebefwbg564r::::res://Assets/Custom Character/happy_head.png<>uid://diqnt3wxqeb3s::::res://Assets/UI/CyberpunkCraftpixPixel.otf<>uid://biosucxvry71e::::res://Scenes/leaderboard.tscn<>uid://dqn04htu37n0r::::res://Scenes/display_board.tscn
-main_menu.tscn::PackedScene::3932773616947685980::1719214777::0::1::::<><>::res://Scripts/main_menu.gd<>uid://diqnt3wxqeb3s::::res://Assets/UI/CyberpunkCraftpixPixel.otf<>uid://donekxb50x8d3::::res://Assets/UI/GUI.png<>uid://dc1g84mubs8yo::::res://Assets/UI/check.png<>uid://biosucxvry71e::::res://Scenes/leaderboard.tscn<>uid://bk1gvcojepf37::::res://Assets/level/animated_head_sheet.png
-mine.tscn::PackedScene::7993420251219142130::1719214777::0::1::::<><>::res://Scripts/balloon.gd<>uid://bnniirtio3nx2::::res://Assets/obstacles/mine_palette-Sheet.png<>uid://dxg5aq5m74v36::::res://Assets/obstacles/mine_explosion.png
-player.tscn::PackedScene::2189522502887625162::1719215716::0::1::::<><>::res://Scripts/player.gd<>res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V3/Player Death/Player Death 64x64.png<>uid://68qnc173biew::::res://Scenes/ghost.tscn<>uid://dx615fty2q67s::::res://Assets/Custom Character/Player Roll 48x48-Sheet.png<>uid://boxnrsfuvi6my::::res://Assets/Custom Character/player air spin 48x48-Sheet.png<>uid://dlllb53r4pvn8::::res://Assets/Custom Character/Player Idle 48x48-Sheet.png<>uid://b1xdmefmsb2ql::::res://Assets/Custom Character/player jump 48x48-Sheet.png<>uid://2o633c2owfk0::::res://Assets/Custom Character/player run 48x48-Sheet.png<>uid://dpwel3ngllv7g::::res://Assets/Custom Character/hurt-Sheet-Sheet.png<>uid://bjyqfg66513ri::::res://Assets/Custom Character/bar_sheet.png<>uid://diqnt3wxqeb3s::::res://Assets/UI/CyberpunkCraftpixPixel.otf<>uid://bpuaa086bww0s::::res://Assets/sound/sfx/Jump2 (2).wav
-red_bubble.tscn::PackedScene::2776634694662011844::1719214777::0::1::::<><>::res://Scripts/red_bubble.gd<>uid://b3ph7bcsxp8n8::::res://Assets/obstacles/Red_BubbleV4.png
-display_board.tscn::PackedScene::8310690570895136407::1719207430::0::1::::<><>::uid://diqnt3wxqeb3s::::res://Assets/UI/CyberpunkCraftpixPixel.otf<>res://Scripts/display_board.gd
-missile.tscn::PackedScene::8307969489929055303::1719214777::0::1::::<><>::uid://c33k7ug62now6::::res://Assets/obstacles/Misssile.png<>res://Scripts/missile.gd
-::res://Scripts/::1719214724
+leaderboard_new.tscn::PackedScene::4127015085518303329::1719227945::0::1::::<><>::res://Scripts/leaderboard.gd
+level_new.tscn::PackedScene::6757970863757621107::1719232526::0::1::::<><>::uid://bape0nxfqw7mr::::res://Assets/level/cavesofgallet.png<>res://Scripts/level.gd<>uid://6gvd61vivt27::::res://Scenes/player.tscn<>uid://cjsi5dil0klxv::::res://Assets/level/basic_tileset.png<>uid://8k0hfy8n6kdq::::res://Assets/Custom Character/damaged_head.png<>uid://b2ewts6edoqj6::::res://Assets/level/textured_block.png<>uid://bk1gvcojepf37::::res://Assets/level/animated_head_sheet.png<>uid://cuy5c7g3jcds7::::res://Assets/level/tileset_water.png<>uid://b5dyb7msrnwqd::::res://Assets/Custom Character/heart_head.png<>uid://6ebefwbg564r::::res://Assets/Custom Character/happy_head.png<>uid://diqnt3wxqeb3s::::res://Assets/UI/CyberpunkCraftpixPixel.otf<>uid://by2fln3i0155n::::res://Scenes/leaderboard_new.tscn<>uid://dqn04htu37n0r::::res://Scenes/display_board.tscn<>uid://2sk75iymt06d::::res://Assets/UI/controls.png
+main_menu.tscn::PackedScene::3932773616947685980::1719232526::0::1::::<><>::res://Scripts/main_menu.gd<>uid://diqnt3wxqeb3s::::res://Assets/UI/CyberpunkCraftpixPixel.otf<>uid://donekxb50x8d3::::res://Assets/UI/GUI.png<>uid://dc1g84mubs8yo::::res://Assets/UI/check.png<>uid://by2fln3i0155n::::res://Scenes/leaderboard_new.tscn<>uid://bk1gvcojepf37::::res://Assets/level/animated_head_sheet.png<>uid://cqj0uv8vatobe::::res://Assets/UI/x-export.png<>uid://p5y3y724hvlc::::res://Assets/sound/music/menu.ogg
+mine.tscn::PackedScene::7993420251219142130::1719232526::0::1::::<><>::res://Scripts/mine.gd<>uid://bnniirtio3nx2::::res://Assets/obstacles/mine_palette-Sheet.png<>uid://dxg5aq5m74v36::::res://Assets/obstacles/mine_explosion.png
+missile.tscn::PackedScene::8307969489929055303::1719232526::0::1::::<><>::uid://c33k7ug62now6::::res://Assets/obstacles/Misssile.png<>res://Scripts/missile.gd<>uid://5dp6kwndse4a::::res://Assets/obstacles/missle_hd.png
+player.tscn::PackedScene::2189522502887625162::1719232526::0::1::::<><>::res://Scripts/player.gd<>uid://c64fduelcmbwv::::res://Assets/Prototype Character/Asset Packs 1-4 (final)/Asset Pack-V3/Player Death/Player Death 64x64.png<>uid://68qnc173biew::::res://Scenes/ghost.tscn<>uid://dx615fty2q67s::::res://Assets/Custom Character/Player Roll 48x48-Sheet.png<>uid://boxnrsfuvi6my::::res://Assets/Custom Character/player air spin 48x48-Sheet.png<>uid://dlllb53r4pvn8::::res://Assets/Custom Character/Player Idle 48x48-Sheet.png<>uid://b1xdmefmsb2ql::::res://Assets/Custom Character/player jump 48x48-Sheet.png<>uid://2o633c2owfk0::::res://Assets/Custom Character/player run 48x48-Sheet.png<>uid://dpwel3ngllv7g::::res://Assets/Custom Character/hurt-Sheet-Sheet.png<>uid://bjyqfg66513ri::::res://Assets/Custom Character/bar_sheet.png<>uid://diqnt3wxqeb3s::::res://Assets/UI/CyberpunkCraftpixPixel.otf<>uid://bpuaa086bww0s::::res://Assets/sound/sfx/Jump2 (2).wav<>uid://clr2grpgmjhuc::::res://Assets/sound/sfx/Jump (2).wav<>uid://dxc4l6b2d4f4a::::res://Assets/sound/sfx/4.wav<>uid://jualuipyp3vt::::res://Assets/sound/sfx/dash.wav<>uid://rj7njjmd6ghm::::res://Assets/sound/sfx/Hit_Hurt2.wav<>uid://cf20o4dx7bcfo::::res://Assets/sound/sfx/Hit_Hurt6.wav<>uid://cbvbnncb2oslp::::res://Assets/sound/sfx/Confirm 1.wav<>uid://caf0oj4ixdkcc::::res://Assets/UI/Fire+Sparks-Sheet.png<>uid://ht66jyg7lj5e::::res://Assets/sound/music/game_2.ogg<>uid://d16kggijjrcy4::::res://Assets/sound/music/game.ogg<>uid://chhyh50iafo8i::::res://Assets/UI/Smoke-Sheet.png
+red_bubble.tscn::PackedScene::2776634694662011844::1719232526::0::1::::<><>::res://Scripts/red_bubble.gd<>uid://b3ph7bcsxp8n8::::res://Assets/obstacles/Red_BubbleV4.png
+::res://Scripts/::1719230844
 balloon.gd::GDScript::-1::1719214127::0::1::::<>Node2D<>::
+display_board.gd::GDScript::-1::1719189402::0::1::::<>Control<>::
 Ghost.gd::GDScript::-1::1719100925::0::1::::<>Sprite2D<>::
 gold_bubble.gd::GDScript::-1::1719213268::0::1::::<>Node2D<>::
 green_bubble.gd::GDScript::-1::1719129583::0::1::::<>Node2D<>::
 health_bubble.gd::GDScript::-1::1719125132::0::1::::<>Node2D<>::
 health_potion.gd::GDScript::-1::1719125063::0::1::::<>RigidBody2D<>::
-leaderboard.gd::GDScript::-1::1719214724::0::1::::<>Node<>::
-level.gd::GDScript::-1::1719214492::0::1::::<>Node2D<>::
-player.gd::GDScript::-1::1719210572::0::1::::<>CharacterBody2D<>::
-red_bubble.gd::GDScript::-1::1719211900::0::1::::<>Node2D<>::
-main_menu.gd::GDScript::-1::1719208232::0::1::::<>Control<>::
-display_board.gd::GDScript::-1::1719189402::0::1::::<>Control<>::
-missile.gd::GDScript::-1::1719207706::0::1::::<>Node2D<>::
+leaderboard.gd::GDScript::-1::1719218429::0::1::::<>Node<>::
+level.gd::GDScript::-1::1719230844::0::1::::<>Node2D<>::
+main_menu.gd::GDScript::-1::1719221835::0::1::::<>Control<>::
+mine.gd::GDScript::-1::1719221150::0::1::::<>Node2D<>::
+missile.gd::GDScript::-1::1719221154::0::1::::<>Node2D<>::
+player.gd::GDScript::-1::1719228784::0::1::::<>CharacterBody2D<>::
+red_bubble.gd::GDScript::-1::1719221122::0::1::::<>Node2D<>::

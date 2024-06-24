@@ -1,10 +1,9 @@
 extends Control
 
 const naughty_words: Array = ["fuck", "shit", "bitch", "nigga", "nigger", "sh1t", "fxck", "bastard", "dick", "faggot", "pussy", "retard"]
-const naughty_words_specific: Array = ["ass"]
+const naughty_words_specific: Array = ["ass", "", "fag", "fagg"]
 const BLUE_BUBBLE = preload("res://Scenes/balloon.tscn")
-@onready var leaderboard = preload("res://Scenes/leaderboard.tscn")
-@onready var next_scene = preload("res://Scenes/level.tscn")
+@onready var leaderboard = preload("res://Scenes/leaderboard_new.tscn")
 @onready var left_spawntimer = $Spawners/Left_Spawntimer
 @onready var right_spawntimer = $Spawners/Right_Spawntimer
 @onready var left_one = $Spawners/Left_One
@@ -14,6 +13,10 @@ const BLUE_BUBBLE = preload("res://Scenes/balloon.tscn")
 @onready var head = $head
 @onready var check = $"Enter Name/check"
 @onready var check_length_timer = $"Enter Name/check_length_timer"
+@onready var start_timer = $Play/start_timer
+@onready var line_edit = $"Enter Name/LineEdit"
+@onready var music = $music
+@onready var music_loop = $music_loop
 
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var left_bubble
@@ -30,6 +33,7 @@ func _ready():
 	right_spawntimer.start()
 	head.play("visible")
 	check.play("invisible")
+	music.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -43,19 +47,26 @@ func invalid_name():
 func taken_name():
 	#called when a name is already being used
 	pass
-
-func _on_line_edit_text_submitted(new_text):
-	new_text = new_text.to_lower()
+func check_text(text: String):
+	text = text.to_lower()
 	for word in naughty_words:
-		if new_text.contains(word):
-			return
+		if text.contains(word):
+			check.play("wrong")
+			check_length_timer.start()
+			return false
 	for word in naughty_words_specific:
-		if new_text == word:
-			return
+		if text == word:
+			check.play("wrong")
+			check_length_timer.start()
+			return false
 	#make this the new name
-	leaderboard_node._change_player_name(new_text)
+	leaderboard_node._change_player_name(text)
 	check.play("visible")
 	check_length_timer.start()
+	return true
+	
+func _on_line_edit_text_submitted(new_text):
+	check_text(new_text)
 	
 
 
@@ -76,8 +87,21 @@ func _on_right_spawntimer_timeout():
 
 
 func _on_button_pressed():
-	get_tree().change_scene_to_file("res://Scenes/level.tscn")
+	if check_text(line_edit.text):
+		start_timer.start()
 
 
 func _on_check_length_timeout():
 	check.play("invisible")
+
+
+func _on_start_timer_timeout():
+	get_tree().change_scene_to_file("res://Scenes/level_new.tscn")
+
+
+func _on_music_finished():
+	music_loop.start()
+
+
+func _on_music_loop_timeout():
+	music.play()

@@ -15,9 +15,6 @@ var submit_score_http = HTTPRequest.new()
 var set_name_http = HTTPRequest.new()
 var get_name_http = HTTPRequest.new()
 
-
-var display_board: PackedScene = preload("res://Scenes/leaderboard.tscn")
-
 func _ready():
 	_authentication_request()
 

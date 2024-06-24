@@ -1,31 +1,24 @@
-[gd_scene load_steps=15 format=3 uid="uid://dqmpbqrf8ojrb"]
+[gd_scene load_steps=14 format=3 uid="uid://dqmpbqrf8ojrb"]
 
 [ext_resource type="Texture2D" uid="uid://c33k7ug62now6" path="res://Assets/obstacles/Misssile.png" id="1_268i8"]
 [ext_resource type="Script" path="res://Scripts/missile.gd" id="1_mmlmf"]
+[ext_resource type="Texture2D" uid="uid://5dp6kwndse4a" path="res://Assets/obstacles/missle_hd.png" id="2_h0wua"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ej3tx"]
-atlas = ExtResource("1_268i8")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcynp"]
+atlas = ExtResource("2_h0wua")
+region = Rect2(0, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yje06"]
-atlas = ExtResource("1_268i8")
-region = Rect2(64, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_slm8w"]
+atlas = ExtResource("2_h0wua")
+region = Rect2(48, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ie8nw"]
-atlas = ExtResource("1_268i8")
-region = Rect2(128, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vg3s"]
+atlas = ExtResource("2_h0wua")
+region = Rect2(96, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hdpcy"]
-atlas = ExtResource("1_268i8")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f6kkp"]
-atlas = ExtResource("1_268i8")
-region = Rect2(192, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2cm62"]
-atlas = ExtResource("1_268i8")
-region = Rect2(224, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7uu0"]
+atlas = ExtResource("2_h0wua")
+region = Rect2(144, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6y4vr"]
 atlas = ExtResource("1_268i8")
@@ -47,28 +40,22 @@ region = Rect2(352, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ej3tx")
+"texture": SubResource("AtlasTexture_mcynp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yje06")
+"texture": SubResource("AtlasTexture_slm8w")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ie8nw")
+"texture": SubResource("AtlasTexture_5vg3s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7uu0")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 19.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hdpcy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f6kkp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2cm62")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6y4vr")
 }, {
@@ -88,7 +75,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jy3pw"]
 radius = 6.0
-height = 24.0
+height = 38.0
 
 [node name="missile" type="Area2D" groups=["trap"]]
 collision_layer = 4
@@ -97,13 +84,9 @@ script = ExtResource("1_mmlmf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ba7t7")
-animation = &"popping"
+frame_progress = 0.660165
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+scale = Vector2(1.24, 1)
 shape = SubResource("CapsuleShape2D_jy3pw")
-
-[node name="lifetime" type="Timer" parent="."]
-wait_time = 20.0
-one_shot = true
-
-[connection signal="timeout" from="lifetime" to="." method="_on_lifetime_timeout"]

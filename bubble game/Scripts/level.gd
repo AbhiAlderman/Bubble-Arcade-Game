@@ -20,8 +20,8 @@ const W1_MAX_CHUNK_SIZE: int = 2
 const W2_DOWNTIME: float = 6
 const W2_MIN_BUBBLES: int = 4
 const W2_MAX_BUBBLES: int = 8
-const W2_MIN_TRAPS: int = 2
-const W2_MAX_TRAPS: int = 4
+const W2_MIN_TRAPS: int = 3
+const W2_MAX_TRAPS: int = 6
 const W2_MIN_CHUNK_SIZE: int = 2
 const W2_MAX_CHUNK_SIZE: int = 3
 #Wave 3 constants
@@ -33,43 +33,43 @@ const W3_MAX_TRAPS: int = 6
 const W3_MIN_CHUNK_SIZE: int = 3
 const W3_MAX_CHUNK_SIZE: int = 4
 #Wave 4 constants
-const W4_DOWNTIME: float = 10
-const W4_MIN_BUBBLES: int = 7
-const W4_MAX_BUBBLES: int = 12
-const W4_MIN_TRAPS: int = 6
-const W4_MAX_TRAPS: int = 8
+const W4_DOWNTIME: float = 6
+const W4_MIN_BUBBLES: int = 9
+const W4_MAX_BUBBLES: int = 15
+const W4_MIN_TRAPS: int = 7
+const W4_MAX_TRAPS: int = 15
 const W4_MIN_CHUNK_SIZE: int = 4
 const W4_MAX_CHUNK_SIZE: int = 5
 #Wave 5 constants
-const W5_DOWNTIME: float = 10
-const W5_MIN_BUBBLES: int = 8
-const W5_MAX_BUBBLES: int = 15
-const W5_MIN_TRAPS: int = 8
-const W5_MAX_TRAPS: int = 12
+const W5_DOWNTIME: float = 8
+const W5_MIN_BUBBLES: int = 14
+const W5_MAX_BUBBLES: int = 20
+const W5_MIN_TRAPS: int = 15
+const W5_MAX_TRAPS: int = 28
 const W5_MIN_CHUNK_SIZE: int = 5
 const W5_MAX_CHUNK_SIZE: int = 6
 #Wave 6 constants
 const W6_DOWNTIME: float = 10
-const W6_MIN_BUBBLES: int = 11
-const W6_MAX_BUBBLES: int = 20
-const W6_MIN_TRAPS: int = 12
-const W6_MAX_TRAPS: int = 16
+const W6_MIN_BUBBLES: int = 25
+const W6_MAX_BUBBLES: int = 32
+const W6_MIN_TRAPS: int = 22
+const W6_MAX_TRAPS: int = 40
 const W6_MIN_CHUNK_SIZE: int = 6
 const W6_MAX_CHUNK_SIZE: int = 7
 #Wave 7 constants
 const W7_DOWNTIME: float = 10
-const W7_MIN_BUBBLES: int = 15
-const W7_MAX_BUBBLES: int = 25
-const W7_MIN_TRAPS: int = 20
-const W7_MAX_TRAPS: int = 30
+const W7_MIN_BUBBLES: int = 28
+const W7_MAX_BUBBLES: int = 40
+const W7_MIN_TRAPS: int = 50
+const W7_MAX_TRAPS: int = 70
 const W7_MIN_CHUNK_SIZE: int = 7
 const W7_MAX_CHUNK_SIZE: int = 8
 #Wave max constants
 const WMAX_DOWNTIME: float = 10
-const WMAX_MIN_BUBBLES: int = 20
-const WMAX_MAX_BUBBLES: int = 35
-const WMAX_MIN_TRAPS: int = 30
-const WMAX_MAX_TRAPS: int = 40
+const WMAX_MIN_BUBBLES: int = 40
+const WMAX_MAX_BUBBLES: int = 65
+const WMAX_MIN_TRAPS: int = 70
+const WMAX_MAX_TRAPS: int = 80
 const WMAX_MIN_CHUNK_SIZE: int = 8
 const WMAX_MAX_CHUNK_SIZE: int = 10
 
@@ -101,6 +101,8 @@ const LAYER_SIZE: int = 200
 @onready var board_display = $UI/Board_Display
 @onready var play_again = $UI/play_again
 @onready var player = $player
+@onready var show_timer = $display_controls/show_timer
+@onready var show_controls = $display_controls/show_controls
 
 const BLUE_BUBBLE = preload("res://Scenes/balloon.tscn")
 const RED_BUBBLE = preload("res://Scenes/red_bubble.tscn")
@@ -144,6 +146,8 @@ var green_spawn_chance: float
 var missile_spawn_chance: float
 var red_spawn_chance: float
 
+var show_control_state: int 
+
 func _ready():
 	player_health = 3
 	flash_damage = false
@@ -155,6 +159,8 @@ func _ready():
 	score_display.text = "SCORE: " + str(score)
 	board_display.visible = false
 	play_again.visible = false
+	show_control_state = 0
+	show_timer.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -199,6 +205,15 @@ func _process(_delta):
 				head_1.play("visible")
 				head_2.play("visible")
 				head_3.play("visible")
+	match show_control_state:
+		0:
+			show_controls.play("move")
+		1:
+			show_controls.play("jump")
+		2:
+			show_controls.play("dash")
+		_:
+			show_controls.play("invisible")
 
 func change_health(health: int):
 	if health < player_health:
@@ -428,3 +443,8 @@ func _on_wave_downtime_timeout():
 
 func _on_flash_heal_timer_timeout():
 	flash_heal = false
+
+
+func _on_show_timer_timeout():
+	show_control_state += 1
+	show_timer.start()

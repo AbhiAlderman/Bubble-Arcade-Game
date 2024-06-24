@@ -1,21 +1,20 @@
-[gd_scene load_steps=47 format=3 uid="uid://bwbchbfo3br3y"]
+[gd_scene load_steps=51 format=3 uid="uid://bwbchbfo3br3y"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_gmd4i"]
 [ext_resource type="FontFile" uid="uid://diqnt3wxqeb3s" path="res://Assets/UI/CyberpunkCraftpixPixel.otf" id="1_v7216"]
 [ext_resource type="Texture2D" uid="uid://donekxb50x8d3" path="res://Assets/UI/GUI.png" id="2_qmif6"]
 [ext_resource type="Texture2D" uid="uid://dc1g84mubs8yo" path="res://Assets/UI/check.png" id="3_015t5"]
-[ext_resource type="PackedScene" uid="uid://biosucxvry71e" path="res://Scenes/leaderboard.tscn" id="3_gi552"]
+[ext_resource type="PackedScene" uid="uid://by2fln3i0155n" path="res://Scenes/leaderboard_new.tscn" id="3_gi552"]
 [ext_resource type="Texture2D" uid="uid://bk1gvcojepf37" path="res://Assets/level/animated_head_sheet.png" id="4_5gtwy"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_fyjwj"]
-font = ExtResource("1_v7216")
-font_size = 40
-outline_size = 10
-outline_color = Color(0.129412, 0.129412, 0.137255, 1)
-shadow_color = Color(0, 0, 0, 1)
+[ext_resource type="Texture2D" uid="uid://cqj0uv8vatobe" path="res://Assets/UI/x-export.png" id="4_jqahp"]
+[ext_resource type="AudioStream" uid="uid://p5y3y724hvlc" path="res://Assets/sound/music/menu.ogg" id="8_0x8cp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_12ct2"]
 atlas = ExtResource("3_015t5")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpcis"]
+atlas = ExtResource("4_jqahp")
 region = Rect2(0, 0, 64, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ay05n"]
@@ -35,7 +34,28 @@ animations = [{
 "loop": true,
 "name": &"visible",
 "speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpcis")
+}],
+"loop": true,
+"name": &"wrong",
+"speed": 5.0
 }]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fo84s"]
+font = ExtResource("1_v7216")
+font_size = 31
+outline_size = 10
+outline_color = Color(0.129412, 0.129412, 0.137255, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fyjwj"]
+font = ExtResource("1_v7216")
+font_size = 65
+outline_size = 10
+outline_color = Color(0.129412, 0.129412, 0.137255, 1)
+shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_422x8"]
 
@@ -318,19 +338,8 @@ placeholder_text = "YOUR NAME HERE"
 max_length = 12
 expand_to_text_length = true
 
-[node name="Enter Your Name" type="Label" parent="Enter Name"]
-offset_left = -198.0
-offset_top = -190.0
-offset_right = 211.0
-offset_bottom = -101.0
-text = "SET OR CHANGE
-YOUR NAME"
-label_settings = SubResource("LabelSettings_fyjwj")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="check" type="AnimatedSprite2D" parent="Enter Name"]
-position = Vector2(205, -77)
+position = Vector2(199, -64)
 scale = Vector2(1.84971, 2.19864)
 sprite_frames = SubResource("SpriteFrames_ay05n")
 animation = &"visible"
@@ -339,14 +348,23 @@ animation = &"visible"
 wait_time = 3.0
 one_shot = true
 
+[node name="Enter Name" type="Label" parent="Enter Name"]
+offset_left = -197.0
+offset_top = -167.0
+offset_right = 212.0
+offset_bottom = -78.0
+text = "ENTER YOUR NAME"
+label_settings = SubResource("LabelSettings_fo84s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Game Name" type="Label" parent="."]
 layout_mode = 0
-offset_left = -262.0
-offset_top = -339.0
-offset_right = 265.0
-offset_bottom = -250.0
-text = "MY GAME NAME IS GOING 
-TO GO HERE!!!"
+offset_left = -310.0
+offset_top = -270.0
+offset_right = 339.0
+offset_bottom = -181.0
+text = "BUBBLE BOUNCER"
 label_settings = SubResource("LabelSettings_fyjwj")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -420,8 +438,23 @@ position = Vector2(1, 51)
 scale = Vector2(4.72, 5.8)
 sprite_frames = SubResource("SpriteFrames_hsaoa")
 
+[node name="start_timer" type="Timer" parent="Play"]
+wait_time = 0.8
+one_shot = true
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_0x8cp")
+volume_db = -12.0
+
+[node name="music_loop" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="text_submitted" from="Enter Name/LineEdit" to="." method="_on_line_edit_text_submitted"]
 [connection signal="timeout" from="Enter Name/check_length_timer" to="." method="_on_check_length_timeout"]
 [connection signal="timeout" from="Spawners/Left_Spawntimer" to="." method="_on_left_spawntimer_timeout"]
 [connection signal="timeout" from="Spawners/Right_Spawntimer" to="." method="_on_right_spawntimer_timeout"]
 [connection signal="pressed" from="Play/Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="Play/start_timer" to="." method="_on_start_timer_timeout"]
+[connection signal="finished" from="music" to="." method="_on_music_finished"]
+[connection signal="timeout" from="music_loop" to="." method="_on_music_loop_timeout"]

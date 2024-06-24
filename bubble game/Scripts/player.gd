@@ -63,13 +63,19 @@ enum states {
 @onready var hit_1 = $Sounds/Hit_1
 @onready var hit_2 = $Sounds/Hit_2
 @onready var heal = $Sounds/Heal
+@onready var on_fire = $on_fire
+@onready var music = $Sounds/music
+@onready var music_2 = $Sounds/music_2
+@onready var music_timer = $Sounds/music_timer
 
+var next_song
 
 func _ready():
 	player_state = states.GROUNDED
 	health = 3
 	combo_display.visible = false
 	jump_3.pitch_scale = MIN_BOUNCE_PITCH
+	music.play()
 	
 func _process(delta):
 	animate()
@@ -77,9 +83,11 @@ func _process(delta):
 func _physics_process(delta):
 	if player_state == states.FULL_DEAD:
 		velocity.y += delta * FALL_NORMAL_GRAVITY
+		velocity.x = move_toward(velocity.x, 0, 20)
 		move_and_slide()
 	elif dying:
 		player_state = states.DEAD
+		velocity.x = move_toward(velocity.x, 0, 20)
 		velocity.y += delta * FALL_NORMAL_GRAVITY
 		move_and_slide()
 	else:
@@ -174,7 +182,6 @@ func bounce():
 	velocity.y = BOUNCE_VELOCITY
 	flipping = true
 	jump_3.play()
-	print(jump_3.pitch_scale)
 	jump_3.pitch_scale = 0.032 * bubble_streak + 0.3
 
 func change_health(amount: int):
@@ -204,7 +211,6 @@ func die():
 
 func handle_death():
 	player_state = states.FULL_DEAD
-	print("CALLING GAME OVER")
 	get_parent().game_over()
 
 func add_ghost():
@@ -257,6 +263,12 @@ func animate():
 	else:
 		combo_display.visible = true
 		combo_display.text = "+ " + str(bubble_streak)
+	if bubble_streak < 30:
+		on_fire.play("invisible")
+	elif bubble_streak < 60:
+		on_fire.play("smoke")
+	else:
+		on_fire.play("fire")
 func _on_death_timer_timeout():
 	handle_death()
 
@@ -308,10 +320,8 @@ func _on_dash_timer_timeout():
 		player_state = states.AIRBORNE
 		flipping = false
 
-
 func _on_dash_cooldown_timer_timeout():
 	can_dash = true
-
 
 func _on_hitstun_timer_timeout():
 	if player_state == states.DEAD or player_state == states.FULL_DEAD:
@@ -321,3 +331,10 @@ func _on_hitstun_timer_timeout():
 	else:
 		player_state = states.AIRBORNE
 		flipping = false
+
+func _on_music_finished():
+	music_2.play()
+
+
+func _on_music_2_finished():
+	music.play()
