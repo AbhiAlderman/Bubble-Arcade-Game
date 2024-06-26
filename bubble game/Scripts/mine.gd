@@ -11,19 +11,16 @@ enum states{
 	RISING,
 	POPPING
 }
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(delta) -> void:
 	match bubble_state:
 		states.RISING:
 			sprite.play("default")
 		states.POPPING:
 			sprite.play("popping")
 
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 	match bubble_state:
 		states.RISING:
 			position.y += rise_speed * delta
@@ -33,13 +30,13 @@ func _physics_process(delta):
 			else:
 				pop_timer -= delta
 
-func pop():
+func pop() -> void:
 	bubble_state = states.POPPING
 	pop_timer = POP_TIME
 
-func set_rise_speed(speed: float):
+func set_rise_speed(speed: float) -> void:
 	rise_speed = speed
 
-func _on_area_entered(area):
+func _on_area_entered(area) -> void:
 	if area.is_in_group("trapbox"):
 		pop()

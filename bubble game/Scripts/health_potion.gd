@@ -7,20 +7,20 @@ const GRAVITY = 1200
 
 var despawning: bool
 
-func _ready():
+func _ready() -> void:
 	lifetime.start()
 	despawning = false
 	
-func _process(delta):
+func _process(delta) -> void:
 	if despawning:
 		sprite.play("despawning")
 	else:
 		sprite.play("default")
 		
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 	linear_velocity.y += delta * GRAVITY
 	
-func picked_up():
+func picked_up() -> void:
 	queue_free()
 
 func _on_lifetime_timeout():

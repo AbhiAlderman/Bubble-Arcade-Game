@@ -1,3 +1,6 @@
+PointLight2D
+DirectionalLight2D
+CanvasModulate
 Timer
 Node
 AnimatedSprite2D
@@ -9,6 +12,3 @@ Button
 ColorRect
 Marker2D
 Control
-LineEdit
-TextEdit
-Camera2D

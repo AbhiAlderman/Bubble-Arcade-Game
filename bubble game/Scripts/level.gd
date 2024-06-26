@@ -148,7 +148,7 @@ var red_spawn_chance: float
 
 var show_control_state: int 
 
-func _ready():
+func _ready() -> void:
 	player_health = 3
 	flash_damage = false
 	flash_heal = false
@@ -163,12 +163,12 @@ func _ready():
 	show_timer.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 	if play_again.visible == true:
 		if Input.is_action_pressed("jump"):
 			get_tree().reload_current_scene()
 
-func _process(_delta):
+func _process(_delta) -> void:
 	score_display.text = "SCORE: " + str(score)
 	match player_health:
 		0:
@@ -215,7 +215,7 @@ func _process(_delta):
 		_:
 			show_controls.play("invisible")
 
-func change_health(health: int):
+func change_health(health: int) -> void:
 	if health < player_health:
 		flash_damage = true
 		flash_damage_timer.start()
@@ -224,27 +224,22 @@ func change_health(health: int):
 		flash_heal_timer.start()
 	player_health = health
 
-func game_over():
+func game_over() -> void:
 	#add score to leaderboard
 	#load leaderboard on screen
 	#add retry button (pressing space)
-	print("CALLED GET LEADERBOARDS")
 	leaderboard._upload_score(score)
 	
 
-func grab_leaderboard():
+func grab_leaderboard() -> void:
 	leaderboard._get_leaderboards()
-	print("BACK FROM LEADERBOARDS")
-	
 
-
-func display_leaderboard(leaderboard: String):
+func display_leaderboard(leaderboard: String) -> void:
 	board_display.visible = true
 	board_display.display_scores(leaderboard)
 	play_again.visible = true
-	
-	
-func spawn_wave():
+
+func spawn_wave() -> void:
 	match wave_number:
 		0:
 			current_wave_downtime = W0_DOWNTIME
@@ -342,7 +337,7 @@ func spawn_wave():
 	run_wave()
 		
 
-func run_wave():
+func run_wave() -> void:
 	num_bubbles = rng.randi_range(current_min_bubbles, current_max_bubbles)
 	num_traps = rng.randi_range(current_min_traps, current_max_traps)
 	current_top_range = top_left.position.y
@@ -376,7 +371,7 @@ func run_wave():
 			trap_count += current_trap_chunk_size
 	wave_downtime.start()			
 
-func create_props(amount: int, trap: bool, top_range: float, bottom_range: float):
+func create_props(amount: int, trap: bool, top_range: float, bottom_range: float) -> void:
 	for i in range(amount):
 		if trap:
 			var missile_chance = rng.randf_range(0.0001, 1)
@@ -429,7 +424,7 @@ func create_props(amount: int, trap: bool, top_range: float, bottom_range: float
 			rng.randf_range(top_left.position.x, top_right.position.x), rng.randf_range(top_range, bottom_range))
 		add_child(next_bubble)
 
-func add_points(points: float):
+func add_points(points: float) -> void:
 	score += points
 	
 func _on_flash_damage_timer_timeout():

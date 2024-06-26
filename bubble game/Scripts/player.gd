@@ -70,17 +70,17 @@ enum states {
 
 var next_song
 
-func _ready():
+func _ready() -> void:
 	player_state = states.GROUNDED
 	health = 3
 	combo_display.visible = false
 	jump_3.pitch_scale = MIN_BOUNCE_PITCH
 	music.play()
 	
-func _process(delta):
+func _process(delta) -> void:
 	animate()
 
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 	if player_state == states.FULL_DEAD:
 		velocity.y += delta * FALL_NORMAL_GRAVITY
 		velocity.x = move_toward(velocity.x, 0, 20)
@@ -98,7 +98,7 @@ func _physics_process(delta):
 		handle_movement()
 		move_and_slide()
 
-func get_gravity():
+func get_gravity() -> float:
 	if flipping:
 		if velocity.y > 0:
 			return RISE_BOUNCE_GRAVITY
@@ -107,7 +107,7 @@ func get_gravity():
 		return RISE_NORMAL_GRAVITY
 	return FALL_NORMAL_GRAVITY
 
-func handle_gravity(delta):
+func handle_gravity(delta) -> void:
 	if player_state == states.DASHING:
 		return
 	if not is_on_floor():
@@ -128,12 +128,12 @@ func handle_gravity(delta):
 		jump_3.pitch_scale = MIN_BOUNCE_PITCH
 		jump_time = 0
 
-func handle_jump_buffer(delta):
+func handle_jump_buffer(delta) -> void:
 	jump_buffer_time_left -= delta
 	if Input.is_action_just_pressed("jump"):
 		jump_buffer_time_left = JUMP_BUFFER_TIME
 
-func handle_jump():
+func handle_jump() -> void:
 	if jump_buffer_time_left > 0:
 		if player_state == states.GROUNDED:
 			jump_2.play()
@@ -145,7 +145,7 @@ func handle_jump():
 	else:
 		dash_pressed = false
 
-func handle_dash():
+func handle_dash() -> void:
 	if (Input.is_action_pressed("dash") or dash_pressed) and can_dash and player_state != states.HITSTUN:
 		player_state = states.DASHING
 		can_dash = false
@@ -163,7 +163,7 @@ func handle_dash():
 		dash_timer.start()
 		dash_cooldown_timer.start()
 	
-func handle_movement():
+func handle_movement() -> void:
 	if player_state == states.DASHING or player_state == states.HITSTUN:
 		return
 	direction = Input.get_axis("left", "right")
@@ -172,25 +172,25 @@ func handle_movement():
 	else:
 		velocity.x = direction * AIR_MOVE_SPEED
 
-func handle_flip():
+func handle_flip() -> void:
 	if velocity.x > 0:
 		sprite.flip_h = false
 	elif velocity.x < 0:
 		sprite.flip_h = true
 
-func bounce():
+func bounce() -> void:
 	velocity.y = BOUNCE_VELOCITY
 	flipping = true
 	jump_3.play()
 	jump_3.pitch_scale = 0.032 * bubble_streak + 0.3
 
-func change_health(amount: int):
+func change_health(amount: int) -> void:
 	health = min(health + amount, 3)
 	get_parent().change_health(health)
 	if health <= 0:
 		die()
 
-func get_hit(mine_position: Vector2, damage: int):
+func get_hit(mine_position: Vector2, damage: int) -> void:
 	if position.x < mine_position.x:
 		velocity.x = -KNOCKBACK_VECTOR.x
 	else:
@@ -200,7 +200,7 @@ func get_hit(mine_position: Vector2, damage: int):
 	change_health(damage)
 	hitstun_timer.start()
 
-func die():
+func die() -> void:
 	dying = true
 	if player_state != states.DEAD:
 		player_state = states.DEAD
@@ -209,16 +209,16 @@ func die():
 	else:
 		pass
 
-func handle_death():
+func handle_death() -> void:
 	player_state = states.FULL_DEAD
 	get_parent().game_over()
 
-func add_ghost():
+func add_ghost() -> void:
 	var ghost = ghost_node.instantiate()
 	ghost.set_property(position, sprite.scale)
 	get_tree().current_scene.add_child(ghost)
 
-func animate():
+func animate() -> void:
 	match player_state:
 		states.GROUNDED:
 			handle_flip()
@@ -269,14 +269,12 @@ func animate():
 		on_fire.play("smoke")
 	else:
 		on_fire.play("fire")
+
 func _on_death_timer_timeout():
 	handle_death()
 
-
 func _on_flipping_timer_timeout():
 	pass # Replace with function body.
-
-
 
 func _on_bubble_hitbox_area_entered(area):
 	if player_state == states.DASHING or player_state == states.HITSTUN or player_state == states.DEAD or player_state == states.FULL_DEAD:
@@ -306,9 +304,9 @@ func _on_bubble_hitbox_area_entered(area):
 		hit_1.play()
 		bubble_streak = 0
 		area.pop()
-		
+
 #update the visible score display
-func update_score(points: float):
+func update_score(points: float) -> void:
 	get_parent().add_points(bubble_streak)
 
 func _on_dash_timer_timeout():
@@ -334,7 +332,6 @@ func _on_hitstun_timer_timeout():
 
 func _on_music_finished():
 	music_2.play()
-
 
 func _on_music_2_finished():
 	music.play()
