@@ -280,7 +280,6 @@ func _on_bubble_hitbox_area_entered(area):
 	if player_state == states.DASHING or player_state == states.HITSTUN or player_state == states.DEAD or player_state == states.FULL_DEAD:
 		return
 	if area.is_in_group("platform") and position.y <= area.position.y:
-		bounce()
 		if area.is_in_group("health"):
 			change_health(1)
 			heal.play()
@@ -297,6 +296,7 @@ func _on_bubble_hitbox_area_entered(area):
 			else:
 				bubble_streak = min(bubble_streak * 2, MAX_BUBBLE_STREAK)
 				update_score(bubble_streak)
+		bounce()
 			
 		area.pop()
 	elif area.is_in_group("trap"):

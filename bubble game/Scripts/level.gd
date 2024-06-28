@@ -103,6 +103,7 @@ const LAYER_SIZE: int = 200
 @onready var player = $player
 @onready var show_timer = $display_controls/show_timer
 @onready var show_controls = $display_controls/show_controls
+@onready var wave_display = $UI/Wave_Display
 
 const BLUE_BUBBLE = preload("res://Scenes/balloon.tscn")
 const RED_BUBBLE = preload("res://Scenes/red_bubble.tscn")
@@ -145,6 +146,7 @@ var health_spawn_chance: float
 var green_spawn_chance: float
 var missile_spawn_chance: float
 var red_spawn_chance: float
+var display_wave
 
 var show_control_state: int 
 
@@ -157,6 +159,8 @@ func _ready() -> void:
 	wave_downtime.start()
 	score = 0
 	score_display.text = "SCORE: " + str(score)
+	display_wave = 0
+	wave_display.text = "WAVE: " + str(display_wave)
 	board_display.visible = false
 	play_again.visible = false
 	show_control_state = 0
@@ -170,6 +174,7 @@ func _physics_process(delta) -> void:
 
 func _process(_delta) -> void:
 	score_display.text = "SCORE: " + str(score)
+	wave_display.text = "WAVE: " + str(display_wave)
 	match player_health:
 		0:
 			head_1.play("invisible")
@@ -241,7 +246,8 @@ func display_leaderboard(leaderboard: String) -> void:
 
 func spawn_wave() -> void:
 	match wave_number:
-		0:
+		0, 1, 2:
+			display_wave = 0
 			current_wave_downtime = W0_DOWNTIME
 			current_min_bubbles = W0_MIN_BUBBLES
 			current_max_bubbles = W0_MAX_BUBBLES
@@ -254,7 +260,8 @@ func spawn_wave() -> void:
 			missile_spawn_chance = 0
 			red_spawn_chance = 0
 			green_spawn_chance = 0
-		1:
+		3, 4:
+			display_wave = 1
 			current_min_bubbles = W1_MIN_BUBBLES
 			current_max_bubbles = W1_MAX_BUBBLES
 			current_min_traps = W1_MIN_TRAPS
@@ -268,7 +275,8 @@ func spawn_wave() -> void:
 			red_spawn_chance = 0
 			green_spawn_chance = 0
 			
-		2:
+		5, 6, 7:
+			display_wave = 2
 			current_min_bubbles = W2_MIN_BUBBLES
 			current_max_bubbles = W2_MAX_BUBBLES
 			current_min_traps = W2_MIN_TRAPS
@@ -281,7 +289,8 @@ func spawn_wave() -> void:
 			missile_spawn_chance = MISSILE_RATE
 			red_spawn_chance = RED_RATE
 			green_spawn_chance = GREEN_RATE
-		3:
+		8, 9, 10, 11:
+			display_wave = 3
 			current_min_bubbles = W3_MIN_BUBBLES
 			current_max_bubbles = W3_MAX_BUBBLES
 			current_min_traps = W3_MIN_TRAPS
@@ -289,7 +298,8 @@ func spawn_wave() -> void:
 			current_wave_downtime = W3_DOWNTIME
 			current_chunk_min = W3_MIN_CHUNK_SIZE
 			current_chunk_max = W3_MAX_CHUNK_SIZE
-		4:
+		12, 13, 14, 15, 16:
+			display_wave = 4
 			current_min_bubbles = W4_MIN_BUBBLES
 			current_max_bubbles = W4_MAX_BUBBLES
 			current_min_traps = W4_MIN_TRAPS
@@ -297,7 +307,9 @@ func spawn_wave() -> void:
 			current_wave_downtime = W4_DOWNTIME
 			current_chunk_min = W4_MIN_CHUNK_SIZE
 			current_chunk_max = W4_MAX_CHUNK_SIZE
-		5:
+			
+		17, 18, 19, 20, 21:
+			display_wave = 5
 			current_min_bubbles = W5_MIN_BUBBLES
 			current_max_bubbles = W5_MAX_BUBBLES
 			current_min_traps = W5_MIN_TRAPS
@@ -305,7 +317,9 @@ func spawn_wave() -> void:
 			current_wave_downtime = W5_DOWNTIME
 			current_chunk_min = W5_MIN_CHUNK_SIZE
 			current_chunk_max = W5_MAX_CHUNK_SIZE
-		6:
+			
+		22, 23, 24, 25, 26:
+			display_wave = 6
 			current_min_bubbles = W6_MIN_BUBBLES
 			current_max_bubbles = W6_MAX_BUBBLES
 			current_min_traps = W6_MIN_TRAPS
@@ -313,12 +327,14 @@ func spawn_wave() -> void:
 			current_wave_downtime = W6_DOWNTIME
 			current_chunk_min = W6_MIN_CHUNK_SIZE
 			current_chunk_max = W6_MAX_CHUNK_SIZE
-			gold_spawn_chance *= 2
-			health_spawn_chance *= 2
-			missile_spawn_chance *= 2
-			red_spawn_chance *= 2
-			green_spawn_chance *= 2
-		7:
+			gold_spawn_chance = GOLD_RATE * 2
+			health_spawn_chance = HEALTH_RATE * 2
+			missile_spawn_chance = MISSILE_RATE * 2
+			red_spawn_chance = RED_RATE * 2
+			green_spawn_chance = GREEN_RATE * 2
+			
+		27, 28, 29, 30, 31, 32:
+			display_wave = 7
 			current_min_bubbles = W7_MIN_BUBBLES
 			current_max_bubbles = W7_MAX_BUBBLES
 			current_min_traps = W7_MIN_TRAPS
@@ -327,6 +343,7 @@ func spawn_wave() -> void:
 			current_chunk_min = W7_MIN_CHUNK_SIZE
 			current_chunk_max = W7_MAX_CHUNK_SIZE
 		_:
+			display_wave = 'MAXIMUM'
 			current_min_bubbles = WMAX_MIN_BUBBLES
 			current_max_bubbles = WMAX_MAX_BUBBLES
 			current_min_traps = WMAX_MIN_TRAPS
